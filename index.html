@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Lab Live</title>
+    <style>
+        body { background: #121212; color: #00ffcc; font-family: monospace; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #333; padding: 10px; text-align: left; }
+        .pos { color: #2ecc71; } .neg { color: #e74c3c; }
+    </style>
+</head>
+<body>
+    <h1><i class="fas fa-bolt"></i> Bullet 9s+0.1s Lab</h1>
+    <div id="table-container">Duke ngarkuar te dhenat...</div>
+
+    <script>
+        // Ketu do te lidhet VB6-a jote me vone
+        const rawData = `1 | Stockfish 17.1 | 1173 | 1533 | 3020 | +20.6 | 76.5%`; 
+        
+        function render() {
+            const rows = rawData.trim().split('\n');
+            let html = '<table><tr><th>Rank</th><th>Engine</th><th>Elo</th><th>Gain</th></tr>';
+            rows.forEach(r => {
+                const c = r.split('|').map(i => i.trim());
+                html += `<tr><td>${c[0]}</td><td>${c[1]}</td><td>${c[4]}</td><td class="pos">${c[5]}</td></tr>`;
+            });
+            document.getElementById('table-container').innerHTML = html + '</table>';
+        }
+        render();
+    </script>
+</body>
+</html>
