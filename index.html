@@ -69,10 +69,24 @@
 </div>
 
 <script>
-    function openFile(path) {
-        const fullPath = 'archive/' + path;
-        document.getElementById('viewer').src = fullPath;
-        document.getElementById('path-display').innerText = "Path: root/" + fullPath;
+    function openFile(url) {
+        const frame = document.getElementById('content-frame');
+        
+        // 1. Ndryshojmë burimin e iframe-it
+        frame.src = url;
+    
+        // 2. Kjo është pjesa magjike:
+        // Pasi ngarkohet faqja, e detyrojmë të shkojë te ID-ja (si #Premier)
+        frame.onload = function() {
+            if (url.includes('#')) {
+                const hash = url.split('#')[1];
+                const innerDoc = frame.contentDocument || frame.contentWindow.document;
+                const element = innerDoc.getElementById(hash);
+                if (element) {
+                    element.scrollIntoView();
+                }
+            }
+        };
     }
 
     // Toggle folder visibility
