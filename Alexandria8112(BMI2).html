@@ -19,11 +19,26 @@
 		border-radius: 4px;
 	}
 
-/* Accuracy Indicators */
+	/* Accuracy Indicators */
 	.win { color: #ffff00; font-weight: bold; } /* Yellow: Highlighted Engine */
 	.loss { color: #ff0000; font-weight: bold; } /* Green: Positive Elo */
 	.gold { color: #ff4444; font-weight: bold; } /* Red: Negative Elo */
 
+	  .nav-back {
+		display: inline-block;
+		background-color: #111;
+		color: yellow;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 600;
+		margin-bottom: 25px;
+		opacity: 0.8;
+		transition: opacity 0.2s;
+	}
+	.nav-back:hover {
+		opacity: 1;
+		color: var(--tag-bg);
+	}
   </style>
  </head>
  <body>
@@ -53,6 +68,7 @@
         <td style="padding: 12px; color: #ff0;">Local Testing Lab</td>
     </tr>
 </table>
+<a href="index.html" class="nav-back">← Back to Overview</a>
   <div class="chess-data"><pre>Rank | Engine                            | Score  | Games | Live Elo |  +/-  |  %   | Error |
 -----------------------------------------------------------------------------------------------
 <span class="gold">  1  | Alexandria 8.1.12 x64 (BMI2-5Pct) | 1907.5 | 3,000 |  2882.3  | <span class="win">+21.3</span> | 63.5 | -1.0  |</span>
