@@ -133,10 +133,26 @@
             font-family: "SFMono-Regular", Consolas, monospace;
         }
         .rank-gold { color: var(--gold); font-weight: bold; }
+	.nav-back {
+		display: inline-block;
+		background-color: #111;
+		color: yellow;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 600;
+		margin-bottom: 25px;
+		opacity: 0.8;
+		transition: opacity 0.2s;
+	}
+
+	.nav-back:hover {
+		opacity: 1;
+		color: var(--tag-bg);
+	}
     </style>
 </head>
 <body>
-
+<a href="index.html" class="nav-back">← Back to Overview</a>
 <div class="container">
     <header>
         <h1>Stockfish 17.1 Performance Lab</h1>
@@ -267,3 +283,4 @@ document.getElementById('engineSearch').addEventListener('input', (e) => {
 
 </body>
 </html>
+
