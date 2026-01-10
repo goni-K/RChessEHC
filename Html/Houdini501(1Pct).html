@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="TourneyInfo.css"> -->
-    <title>Caissa 1.24 x64(BMI2-1Pct)</title>
+    <title>Houdini 5.01 x64(1Pct)</title>
     <style>
         * {
             margin: 0;
@@ -32,7 +32,7 @@
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             padding: 30px;
-            max-width: 1200px;
+            max-width: 1100px;
             width: 100%;
             position: relative;
         }
@@ -69,17 +69,6 @@
             background: #ff6b6b;
         }
 
-        .info-section {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        body.dark-mode .info-section {
-            background: #0f3460;
-        }
         h1 {
             text-align: center;
             color: #333;
@@ -88,98 +77,6 @@
         }
 
         body.dark-mode h1 {
-            color: #e8e8e8;
-        }
-
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        .info-table tr {
-            border-bottom: 2px solid #e0e0e0;
-            transition: background 0.3s;
-        }
-
-        body.dark-mode .info-table tr {
-            border-bottom: 2px solid #1a1a2e;
-        }
-
-        .info-table tr:last-child {
-            border-bottom: none;
-        }
-
-        .info-table tr:hover {
-            background: #f5f5f5;
-        }
-
-        body.dark-mode .info-table tr:hover {
-            background: #1a1a2e;
-        }
-
-        .info-table td {
-            padding: 16px;
-        }
-
-        .info-table td:first-child {
-            width: 240px;
-            font-weight: bold;
-            color: #667eea;
-            border-right: 2px solid #e0e0e0;
-        }
-
-        body.dark-mode .info-table td:first-child {
-            color: #e94560;
-            border-right: 2px solid #1a1a2e;
-        }
-
-        .info-table td:last-child {
-            color: #333;
-        }
-
-        body.dark-mode .info-table td:last-child {
-            color: #e8e8e8;
-        }
-
-        .info-table a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .info-table a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-
-        body.dark-mode .info-table a {
-            color: #e94560;
-        }
-
-        body.dark-mode .info-table a:hover {
-            color: #ff6b6b;
-        }
-
-        .status-finished {
-            color: #27ae60 !important;
-            font-weight: bold;
-        }
-
-        body.dark-mode .status-finished {
-            color: #2ecc71 !important;
-        }
-
-        .rankings-section {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-        }
-
-        body.dark-mode .rankings-section {
-            background: #0f3460;
             color: #e8e8e8;
         }
 
@@ -192,7 +89,6 @@
             border-collapse: collapse;
             margin-top: 20px;
         }
-
         thead {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -403,50 +299,59 @@
         opacity: 1;
         color: #fff;  <!-- var(--tag-bg); -->
     }
+    body.dark-mode .info-table {
+        background: linear-gradient(90deg, #fff 0%, #aaa 100%);
+        color: #0000ff;
+    }
+    .info-table tr:hover  {
+        background: linear-gradient(90deg, #b970ab 0%, #ba0fdb 100%);
+        color: #fff;
+    }
+    body.dark-mode .info-table tr:hover {
+        background: linear-gradient(90deg, #000bdf 0%, #fdb000 100%);
+        color: #ffff00;
+    }
   </style>
 </head>
 <body>
     <div class="container">
         <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-        <h1>🏆 Caissa 1.24 x64(BMI2-1Pct)</h1>
+        <h1>🏆 Houdini 5.01 x64(1Pct)</h1>
 <a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a>
-            <table class="info-table">
-                <tr>
-                    <td>Name:</td>
-                    <td>Caissa 1.24 x64(BMI2-1Pct)</td>
-                </tr>
-                <tr>
-                    <td>Status:</td>
-                    <td class="status-finished">2.500 games played / Tournament Finished</td>
-                </tr>
-                <tr>
-                    <td>Time Control:</td>
-                    <td>Ultra-Bullet(2s + 0.1s inc), Hash: 8MB</td>
-                </tr>
-                <tr>
-                    <td>Openings:</td>
-                    <td><a href="../Openings/Gauntlet_Openings.pgn" download="">Openings</a></td>
-                </tr>
-                <tr>
+          <table class="info-table">
+            <tr>
+              <td>Name:</td>
+              <td>Houdini 5.01 x64(1Pct)</td>
+            </tr>
+            <tr>
+              <td>Status:</td>
+              <td>3.000 games played / Tournament Finished</td>
+            </tr>
+            <tr>
+              <td>Time Control:</td>
+              <td>Ultra-Bullet(2s + 0.1s inc), Hash: 8MB</td>
+            </tr>
+            <tr>
+              <td>Openings:</td>
+              <td><a href="../Openings/Gauntlet_Openings.pgn" download="" style="color: #0000ff; text-decoration: none; font-weight: bold;">Gauntlet Openings</a></td>
+            </tr>
+            <tr>
                     <td>GUI:</td>
-                    <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
-                </tr>
-                <tr>
-                    <td>Hardware:</td>
-                    <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
-                </tr>
-                <tr>
-                    <td>OS:</td>
-                    <td>Windows 10 Pro x64</td>
-                </tr>
+              <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+            </tr>
+            <tr>
+              <td>Hardware:</td>
+              <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+            </tr>
+            <tr>
+              <td>OS:</td>
+              <td>Windows 10 Pro x64</td>
+            </tr>
             <tr>
               <td>Environment:</td>
               <td>Local Testing Lab</td>
             </tr>
           </table>
-        <!-- Rankings Section -->
-        <div class="rankings-section">
-            <h1>Caissa 1.24 x64(BMI2-1Pct) vs 30 Opponents</h1>
         <div class="table-wrapper">
             <table id="rankingsTable">
                 <thead>
@@ -463,7 +368,6 @@
                 <tbody id="tableBody">
                 </tbody>
             </table>
-            </div>
         </div>
     </div>
 
@@ -473,33 +377,39 @@
         // ============================================
         
         // Main gauntlet team (stays fixed at top)
-        const mainTeam = [0, "Caissa 1.24 x64(BMI2-1Pct)", 1312.0, 2500, 2241.6, 1.7, 52.4];
-        const data = [ 
-			[1, "Stockfish 17.1 x64(AVX2-1Pct)", 74.0, 100, 2449.0, 137.0, 74.0],
-            [2, "PlentyChess 6.0.0 x64(BMI2-1Pct)", 65.5, 100, 2367.0, 63.0, 65.5],
-            [3, "Alexandria 8.1.0 x64(BMI2-1Pct)", 57.0, 100, 2288.0, -2.0, 57.0],
-            [4, "Obsidian 14.0 x64(BMI2-1Pct)", 55.0, 100, 2276.0, 5.0, 55.0],
-            [5, "Cinder 0.2.0 x64(AVX2-1Pct)", 53.0, 100, 2260.0, -2.0, 53.0],
-            [6, "Alexandria 8.1.12 x64(BMI2-1Pct)", 52.5, 100, 2253.0, -14.0, 52.5],
-            [7, "Astra 6.1.0 x64(BMI2-1Pct)", 52.0, 100, 2245.0, -28.0, 52.0],
-            [8, "Viridithas 17.0.0 x64(AVX2-1Pct)", 51.0, 100, 2257.0, 34.0, 51.0],
-            [9, "Clover 9.0 x64(AVX2-1Pct)", 50.0, 100, 2253.0, 45.0, 50.0],
-            [10, "Halogen 14.0 x64(BMI2-1Pct)", 50.0, 100, 2248.0, 28.0, 50.0],
-            [11, "Viridithas 18.0.0 x64(AVX2-1Pct)", 50.0, 100, 2226.0, -46.0, 50.0],
-            [12, "Obsidian 16.0 x64(BMI2-1Pct)", 47.0, 100, 2208.0, -36.0, 47.0],
-            [13, "Titan 1.1 x64(AVX2-1Pct)", 46.0, 100, 2216.0, 13.0, 46.0],
-            [14, "Velvet 8.1.1 x64(AVX2-1Pct)", 44.5, 100, 2203.0, 5.0, 44.5],
-            [15, "Revenge 4.0 x64(BMI2-1Pct)", 44.0, 100, 2199.0, 4.0, 44.0],
-            [16, "Spaghet BologNNese 1.0 x64(BMI2-1Pct)", 44.0, 100, 2196.0, -6.0, 44.0],
-            [17, "Clover 9.1 x64(AVX2-1Pct)", 43.5, 100, 2195.0, 3.0, 43.5],
-            [18, "Halogen 15.0 x64(BMI2-1Pct)", 43.5, 100, 2191.0, -11.0, 43.5],
-            [19, "Astra 5.2.0 x64(BMI2-1Pct)", 42.0, 100, 2181.0, -10.0, 42.0],
-            [20, "Koivisto 9.0 x64(AVX2-1Pct)", 42.0, 100, 2170.0, -45.0, 42.0],
-            [21, "Tarnished 4.0 x64(AVX2-1Pct)", 41.0, 100, 2171.0, -19.0, 41.0],
-            [22, "Clover 8.2.1 x64(AVX2-1Pct)", 38.5, 100, 2163.0, 18.0, 38.5],
-            [23, "Pawnocchio 1.7 x64(AVX2-1Pct)", 38.0, 100, 2147.0, -29.0, 38.0],
-            [24, "RofChade 3.1 x64(BMI2-1Pct)", 36.0, 100, 2126.0, -51.0, 36.0],
-            [25, "Heimdall 1.4.1 x64(AVX2-1Pct)", 28.0, 100, 2048.0, -124.0, 28.0]
+        const mainTeam = [0, "Houdini 5.01 x64(1Pct)", 1747.5, 3000, 1791.0, -3.0, 58.2];
+        // Replace this data array with your opponent teams (Team-01 through Team-30)
+        const data = [
+            [1, "Odonata 1.0.0 x64(AVX2-1Pct)", 64.0, 100, 1897.0, 14.0, 64.0],
+            [2, "Avalanche 2.1.0 x64(AVX2-1Pct)", 63.5, 100, 1910.0, 73.0, 63.5],
+            [3, "Marvin 6.3.0 x64(AVX2-1Pct)", 63.5, 100, 1901.0, 42.0, 63.5],
+            [4, "Minke 3.0.0 x64(BMI2-1Pct)", 63.5, 100, 1887.0, -13.0, 63.5],
+            [5, "BlackCore 6.0 x64(BMI2-1Pct)", 59.0, 100, 1872.0, 51.0, 59.0],
+            [6, "BitBit 1.6.0 x64(AVX2-1Pct)", 55.0, 100, 1816.0, -43.0, 55.0],
+            [7, "Critter 1.6a x64(1Pct)", 53.5, 100, 1794.0, -84.0, 53.5],
+            [8, "Andscacs 0.95 x64(1Pct)", 51.0, 100, 1797.0, -11.0, 51.0],
+            [9, "Lozza 8.0 x64(1Pct)", 50.0, 100, 1821.0, 91.0, 50.0],
+            [10, "BitBit 1.4.0 x64(AVX2-1Pct)", 49.0, 100, 1773.0, -45.0, 49.0],
+            [11, "Gull 3 x64(1Pct)", 47.5, 100, 1772.0, -13.0, 47.5],
+            [12, "Lambergar 1.3.0 x64(AVX2-1Pct)", 46.0, 100, 1743.0, -75.0, 46.0],
+            [13, "Lunar 0.4.0 x64(1Pct)", 44.0, 100, 1731.0, -69.0, 44.0],
+            [14, "Celeris 0.0.1 x64(1Pct)", 43.5, 100, 1752.0, 14.0, 43.5],
+            [15, "Lozza 7.0 x64(1Pct)", 43.5, 100, 1785.0, 161.0, 43.5],
+            [16, "Eleanor 1.0 x64(AVX2-1Pct)", 42.0, 100, 1773.0, 175.0, 42.0],
+            [17, "Pingu 5.0.0 x64(1Pct)", 41.0, 100, 1730.0, -2.0, 41.0],
+            [18, "Lynx 1.11.0 x64(1Pct)", 40.5, 100, 1713.0, -48.0, 40.5],
+            [19, "Maelstrom 3.2.0 x64(AVX2-1Pct)", 39.5, 100, 1743.0, 103.0, 39.5],
+            [20, "Xiphos 0.6.1 x64(BMI2-1Pct)", 39.5, 100, 1688.0, -107.0, 39.5],
+            [21, "Hannibal 1.7 x64(1Pct)", 31.5, 100, 1663.0, 26.0, 31.5],
+            [22, "Sentinel 2.0 x64(AVX2-1Pct)", 31.5, 100, 1667.0, 54.0, 31.5],
+            [23, "Chiron 4 x64(1Pct)", 28.0, 100, 1611.0, -90.0, 28.0],
+            [24, "Cadie 2.1 x64(AVX2-1Pct)", 27.5, 100, 1607.0, -92.0, 27.5],
+            [25, "Bread 1.6.0 x64(AVX2-1Pct)", 26.5, 100, 1618.0, 18.0, 26.5],
+            [26, "Weiawaga 5.0 x64(1Pct)", 25.5, 100, 1607.0, 64.0, 25.5],
+            [27, "Laser 1.7 x64(BMI2-1Pct)", 22.5, 100, 1574.0, -57.0, 22.5],
+            [28, "Rybka 4.1 x64(1Pct)", 22.5, 100, 1578.0, -19.0, 22.5],
+            [29, "Axiom 2.1.0 x64(1Pct)", 19.0, 100, 1538.0, 21.0, 19.0],
+            [30, "Lunar 0.2.1 x64(1Pct)", 19.0, 100, 1541.0, -80.0, 19.0]
         ];
 
         // Automatically highlight teams with top 3 positive delta values
@@ -542,17 +452,16 @@
             mainTr.classList.add('main-team');
             
             const mainDeltaClass = mainTeam[5] > 0 ? 'positive' : mainTeam[5] < 0 ? 'negative' : '';
-            const mainDeltaSign = mainTeam[5] > 0 ? '+' : mainTeam[5] < 0 ? '' : '';
-            const mainDeltaFormatted = mainTeam[5] === 0 ? '0.0' : `${mainDeltaSign}${mainTeam[5].toFixed(1)}`;
+            const mainDeltaSign = mainTeam[5] > 0 ? '+' : '';
 
             mainTr.innerHTML = `
                 <td class="rank">${mainTeam[0]}</td>
                 <td class="team-name">${mainTeam[1]}</td>
-                <td>${mainTeam[2].toFixed(1)}</td>
+                <td>${mainTeam[2]}</td>
                 <td>${mainTeam[3]}</td>
-                <td class="elo-rating">${mainTeam[4].toFixed(1)}</td>
-                <td><span class="delta ${mainDeltaClass}">${mainDeltaFormatted}</span></td>
-                <td>${mainTeam[6].toFixed(1)}</td>
+                <td class="elo-rating">${mainTeam[4]}</td>
+                <td><span class="delta ${mainDeltaClass}">${mainDeltaSign}${mainTeam[5]}</span></td>
+                <td>${mainTeam[6]}</td>
             `;
             tbody.appendChild(mainTr);
 
@@ -566,17 +475,15 @@
 
                 const deltaClass = row[5] > 0 ? 'positive' : 'negative';
                 const deltaSign = row[5] > 0 ? '+' : '';
-                // const deltaFormatted = row[5] === 0 ? '0.0' : `${deltaSign}${Math.abs(row[5]).toFixed(1)}`;
-                const deltaFormatted = row[5] === 0 ? '0.0' : `${deltaSign}${row[5].toFixed(1)}`;
 
                 tr.innerHTML = `
                     <td class="rank">${row[0]}</td>
                     <td class="team-name">${row[1]}</td>
-                    <td>${row[2].toFixed(1)}</td>
+                    <td>${row[2]}</td>
                     <td>${row[3]}</td>
-                    <td class="elo-rating">${row[4].toFixed(1)}</td>
-                    <td><span class="delta ${deltaClass}">${deltaFormatted}</span></td>
-                    <td>${row[6].toFixed(1)}</td>
+                    <td class="elo-rating">${row[4]}</td>
+                    <td><span class="delta ${deltaClass}">${deltaSign}${row[5]}</span></td>
+                    <td>${row[6]}</td>
                 `;
 
                 tbody.appendChild(tr);
@@ -644,7 +551,7 @@
         });
 
         // Initial render with configured sort
-        sortData(4);
+        sortData(initialSort.column);
     </script>
 </body>
 </html>
