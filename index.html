@@ -1,29 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="Windows-1252">
+    <meta charset="UTF-8">
+	<link rel="icon" href="favicon.ico" type="image/ico">
     <title>Chess Lab | Global Archive</title>
     <style>
         :root { --bg: #0d1117; --sidebar: #161b22; --accent: #58a6ff; --text: #c9d1d9; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; display: flex; height: 100vh; margin: 0; overflow: hidden; }
+        body { 
+			background: var(--bg); 
+			color: var(--text); 
+			font-family: 'Segoe UI', sans-serif; 
+			display: flex; 
+			height: 100vh; 
+			margin: 0; 
+			overflow: hidden; 
+		}
         
         /* Navigation Sidebar */
-        #explorer { width: 350px; background: var(--sidebar); border-right: 1px solid #30363d; display: flex; flex-direction: column; }
-        .header { padding: 15px; border-bottom: 1px solid #30363d; }
-        .tree-container { flex-grow: 1; overflow-y: auto; padding: 10px; font-size: 13px; }
+        #explorer { 
+			width: 350px; 
+			background: var(--sidebar); 
+			border-right: 1px solid #30363d; 
+			display: flex; 
+			flex-direction: column; 
+		}
+        .header { 
+			padding: 15px; 
+			border-bottom: 1px solid #30363d; }
+		.tree-container { 
+			flex-grow: 1; 
+			overflow-y: auto; 
+			padding: 10px; 
+			font-size: 13px; 
+		}
         
         /* Tree Styling */
-        .folder { cursor: pointer; padding: 4px 0; display: block; font-weight: bold; color: var(--accent); }
+        .folder { 
+			cursor: pointer; 
+			padding: 4px 0; 
+			display: block; 
+			font-weight: bold; 
+			color: var(--accent); 
+		}
         .folder::before { content: "📁 "; }
-        .file { cursor: pointer; padding: 2px 20px; display: block; color: #8b949e; text-decoration: none; }
-        .file:hover { color: white; background: #21262d; }
+        .file { 
+			cursor: pointer; 
+			padding: 2px 20px; 
+			display: block; 
+			color: #8b949e; 
+			text-decoration: none; }
+        .file:hover { 
+			color: white; 
+			background: #21262d; 
+		}
         .file::before { content: "📄 "; }
-        .nested { margin-left: 15px; border-left: 1px solid #30363d; }
-
+        .nested { 
+			margin-left: 15px; 
+			border-left: 1px solid #30363d; 
+			display: none
+		}
+		.show-me {
+			display: block !important; 
+		}
         /* Content Viewer */
-        #main-view { flex-grow: 1; display: flex; flex-direction: column; background: #000; }
-        iframe { width: 100%; height: 100%; border: none; background: #fff; }
-        .status-bar { padding: 5px 15px; background: #21262d; font-size: 12px; color: #8b949e; }
+        #main-view { 
+			flex-grow: 1; 
+			display: flex; 
+			flex-direction: column; 
+			background: #000; 
+		}
+        iframe { width: 100%; 
+			height: 100%; 
+			border: none; 
+			background: #fff; 
+		}
+        .status-bar { 
+			padding: 5px 15px; 
+			background: #21262d; 
+			font-size: 12px; 
+			color: #8b949e; 
+			}
 		.testing-section {
 		    background: #1e1e1e;
 		    color: #ddd;
@@ -74,64 +130,83 @@
 <body>
 
 <div id="explorer">
-    <div class="header">
-        <h3 style="margin:0; color:var(--accent);">Chess Archive Explorer</h3>
-        <input type="text" id="search" placeholder="Search engines or seasons..." style="width:90%; margin-top:10px; background:#0d1117; border:1px solid #30363d; color:white; padding:5px;">
+  <div class="header">
+     <h3 style="margin:0; color:var(--accent);">Chess Archive Explorer</h3>
+     <input type="text" id="search" placeholder="Search engines or seasons..." style="width:90%; margin-top:10px; background:#0d1117; border:1px solid #30363d; color:white; padding:5px;">
+  </div>
+  <div class="folder">Ultra-Bullet(9s+0.1)</div>
+  <div class="nested">
+   <div class="folder">Testing</div>
+    <div class="nested">
+      <div class="folder">Gauntlet</div>
+      <div class="nested">
+        <a class="file" href="Html/Alexandria8112(BMI2-5Pct).html">Alexandria 8.1.12 x64(BMI2-5Pct)</a>
+        <a class="file" href="Html/Alexandria800(BMI2-5Pct).html">Alexandria 8.0.0 x64(BMI2-5Pct)</a>
+        <a class="file" href="Html/Alexandria700(BMI2-5Pct).html">Alexandria 7.0.0 x64(BMI2-5Pct)</a>
+      </div>
+      <div class="folder">Round-Robin</div>
+      <div class="nested">
+        <a class="file" href="Html/NewEngines-2025.03.html">New Engines 2025.03</a>
+        <a class="file" href="Html/NewVersions-PrecisionSeries.html">New Versions-Precision Series</a>
+        <a class="file" href="Html/NewVersions-2023.06(5Pct).html">New Versions-2023.06(5Pct)</a>
+      </div>
     </div>
-    
-    <div class="tree-container">
-        <div class="folder">Bullet (5Pct)</div>
-        <div class="nested">
-            <div class="folder">Seasons</div>
+  </div>
+	<div class="folder">Ultra-Bullet(2+0.1)</div>
+	  <div class="nested">
+			<div class="folder">Seasons</div>
+	    <div class="nested">
+	      <a class="file" href="Html/FirstSeasonU1.html">First Season (Full Archive)</a>
+	      <a class="file" href="Html/FirstSeasonU1.html#Premier">Premier Division</a>
+	      <a class="file" href="Html/FirstSeasonU1.html#First">1st Division</a>
+	      <a class="file" href="Html/SecondSeasonU1.html">Second Season (Full Archive)</a>
+	    </div>
+		  <div class="folder">Testing</div>
+			<div class="nested">
+				<div class="folder">Gauntlet</div>
 				<div class="nested">
-					<a class="file" href="Html/FirstSeasonU1.html">First Season (Full Archive)</a>
-					<a class="file" href="Html/FirstSeasonU1.html#Premier">Premier Division</a>
-					<a class="file" href="Html/FirstSeasonU1.html#First">1st Division</a>
-					<a class="file" href="Html/SecondSeasonU1.html">Second Season (Full Archive)</a>
-				</div>
-			<div class="folder">Testing</div>
-				<div class="nested">
-					<div class="folder">Gauntlet</div>
-					<div class="nested">
-						<a class="file" href="Html/Alexandria8112(BMI2-5Pct).html">Alexandria 8.1.12 x64(BMI2-5Pct)</a>
-					</div>
-				</div>
-			</div>
-        <div class="folder">Bullet (1Pct)</div>
-        <div class="nested">
-            <div class="folder">Seasons</div>
-				<div class="nested">
-				</div>
-			<div class="folder">Testing</div>
-				<div class="nested">
-					<div class="folder">Gauntlet</div>
-					<div class="nested">
-						<a class="file" href="Html/PlentyChess700(BMI2-1Pct).html">PlentyChess 7.0.0 x64(BMI2-1Pct)</a>
-						<a class="file" href="Html/Pawnocchio19(AVX2-1Pct).html">Pawnocchio 1.9 x64(AVX2-1Pct)</a>
-						<a class="file" href="Html/Caissa124(BMI2-1Pct).html">Caissa 1.24 x64(BMI2-1Pct)</a>
-						<a class="file" href="Html/Viridithas1901(AVX2-1Pct).html">Viridithas 19.0.1 x64(AVX2-1Pct)</a>
-						<a class="file" href="Html/Cinder031(AVX2-1Pct).html">Cinder 0.3.1 x64(AVX2-1Pct)</a>
-						<a class="file" href="Html/Cinder041(AVX2-1Pct).html">Cinder 0.4.1 x64(AVX2-1Pct)</a>
-						<a class="file" href="Html/Houdini501(1Pct).html">Houdini 5.01 x64(1Pct)</a>
-					</div>
-				</div>
-			</div>
+					<a class="file" href="Html/Reckless090d2(AVX2-1Pct).html">Reckless 0.9.0d2 x64(AVX2-1Pct)</a>
+					<a class="file" href="Html/Reckless090d(AVX2-1Pct).html">Reckless 0.9.0d x64(AVX2-1Pct)</a>
+					<a class="file" href="Html/Grail103(1Pct).html">Grail 1.0.3 x64(1Pct)</a>
+					<a class="file" href="Html/PlentyChess700(BMI2-1Pct).html">PlentyChess 7.0.0 x64(BMI2-1Pct)</a>
+					<a class="file" href="Html/Pawnocchio19(AVX2-1Pct).html">Pawnocchio 1.9 x64(AVX2-1Pct)</a>
+					<a class="file" href="Html/Caissa124(BMI2-1Pct).html">Caissa 1.24 x64(BMI2-1Pct)</a>
+					<a class="file" href="Html/Viridithas1901(AVX2-1Pct).html">Viridithas 19.0.1 x64(AVX2-1Pct)</a>
+					<a class="file" href="Html/Cinder031(AVX2-1Pct).html">Cinder 0.3.1 x64(AVX2-1Pct)</a>
+					<a class="file" href="Html/Cinder041(AVX2-1Pct).html">Cinder 0.4.1 x64(AVX2-1Pct)</a>
+					<a class="file" href="Html/Houdini501(1Pct).html">Houdini 5.01 x64(1Pct)</a>
 
-        <div class="folder">Blitz</div>
-			<div class="folder">Testing</div>
-				<div class="nested">
-					<div class="folder">Gauntlet</div>
-					<div class="nested">
-						<a class="file" href="Html/Stockfish171x64(AVX2).html">Stockfish 17.1 x64(AVX2)</a>
-					</div>
 				</div>
-        <div class="nested">
-            <div class="folder">WorldCup</div>
-            <div class="nested">
-		        <!-- <a class="file" href="wc2022/groups.html">2022 Groups</a> -->
-            </div>
-        </div>
+			</div>
     </div>
+
+    <div class="folder">Blitz</div>
+    <div class="nested">
+      <div class="folder">Seasons</div>
+		  <div class="nested">
+			<a class="file" href="Html/Premier-Division 1st-Season(Blitz).html">Premier Division</a>
+			<a class="file" href="Html/Premier-Division 1st-Season(Blitz).html">First Division</a>
+		</div>
+		 <div class="folder">Testing</div>
+		 <div class="nested">
+			<div class="folder">Gauntlet</div>
+			<div class="nested">
+				<a class="file" href="Html/Critter16a(Blitz).html">Critter 1.6a x64(Blitz)</a>
+			</div>
+		 </div>
+     </div>
+
+    <div class="folder">Blitz-Bullet</div>
+			<div class="nested">
+		  <div class="folder">Testing</div>
+			<div class="nested">
+				<div class="folder">Gauntlet</div>
+				<div class="nested">
+					<a class="file" href="Html/Stockfish171(AVX2).html">Stockfish 17.1 x64(AVX2)</a>
+					<a class="file" href="Html/Stockfish151(BMI2).html">Stockfish 15.1 x64(BMI2)</a>
+				</div>
+			</div>
+     </div>
 </div>
 
 <div id="main-view">
@@ -140,12 +215,15 @@
 </div>
 
 <script>
+
 function openFile(url) {
     const frame = document.getElementById('content-frame');
+    if (!frame) return;
 
     const currentPath = frame.contentWindow.location.pathname;
-    const newFile = url.split('#')[0];
-    const hash = url.split('#')[1];
+    const urlParts = url.split('#');
+    const newFile = urlParts[0];
+    const hash = urlParts[1];
 
     if (currentPath.includes(newFile) && hash) {
         const element = frame.contentDocument.getElementById(hash);
@@ -157,16 +235,39 @@ function openFile(url) {
     }
 }
 
-    // Toggle folder visibility
-    document.querySelectorAll('.folder').forEach(folder => {
-        folder.addEventListener('click', function() {
-            const nested = this.nextElementSibling;
-            if (nested && nested.classList.contains('nested')) {
-                nested.style.display = nested.style.display === 'none' ? 'block' : 'none';
-            }
-        });
-    });
-</script>
+document.addEventListener('click', function(e) {
+    const folder = e.target.closest('.folder');
+    if (!folder) return;
 
+    const nested = folder.nextElementSibling;
+    if (nested && nested.classList.contains('nested')) {
+        const id = folder.innerText.trim();
+        
+        // Toggle Display
+        if (nested.style.display === 'block') {
+            nested.style.display = 'none';
+            localStorage.removeItem('f_' + id);
+        } else {
+            nested.style.display = 'block';
+            localStorage.setItem('f_' + id, 'active');
+        }
+    }
+});
+
+window.addEventListener('load', function() {
+    document.querySelectorAll('.folder').forEach(folder => {
+        const id = folder.innerText.trim();
+        const nested = folder.nextElementSibling;
+
+        if (nested && nested.classList.contains('nested')) {
+            if (localStorage.getItem('f_' + id) === 'active') {
+                nested.style.display = 'block';
+            } else {
+                nested.style.display = 'none';
+            }
+        }
+    });
+});
+</script>
 </body>
 </html>
