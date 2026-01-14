@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="TourneyInfo.css"> -->
-    <title>Pawnocchio 1.9 x64(AVX2-1Pct)</title>
+    <title>Stockfish 15.1 x64(BMI2)</title>
     <style>
         * {
             margin: 0;
@@ -403,25 +403,59 @@
         opacity: 1;
         color: #fff;  <!-- var(--tag-bg); -->
     }
+	/* Stilimi i Tooltip-it */
+	.tooltip {
+	  position: relative;
+	  display: inline-block;
+	  border-bottom: 2px dotted #ffff; /* Një vijë poshtë titullit që ta dinë që ka diçka */
+	  cursor: help;
+	  color: #2196F3; /* Ngjyra e titullit */
+	}
+
+	.tooltip .tooltiptext {
+	  visibility: hidden;
+	  width: 450px;
+	  background-color: #333;
+	  color: #fff;
+	  text-align: left;
+	  border-radius: 6px;
+	  padding: 15px;
+	  position: absolute;
+	  z-index: 1;
+	  top: 125%; /* Shfaqet poshtë titullit */
+	  left: 50%;
+	  margin-left: -225px;
+	  opacity: 0;
+	  transition: opacity 0.3s;
+	  font-size: 14px;
+	  line-height: 1.5;
+	  box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+	  font-family: sans-serif;
+	}
+
+	.tooltip:hover .tooltiptext {
+	  visibility: visible;
+	  opacity: 1;
+	}
   </style>
 </head>
 <body>
     <div class="container">
         <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-		<a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a>
-        <h1>🏆 Pawnocchio 1.9 x64(AVX2-1Pct)</h1>
+        <h1>🏆 Stockfish 15.1 x64(BMI2)</h1>
+<a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a>
             <table class="info-table">
                 <tr>
                     <td>Name:</td>
-                    <td title="(1Pct) indicates the engine was tested using exactly 1% of the standard 3m + 2s Blitz time control.">Pawnocchio 1.9 x64(AVX2-1Pct)</td>
+                    <td>Stockfish 15.1 x64(BMI2)</td>
                 </tr>
                 <tr>
                     <td>Status:</td>
-                    <td class="status-finished">3000 games played / Tournament Finished</td>
+                    <td class="status-finished">1.260 games played / Tournament Finished</td>
                 </tr>
                 <tr>
                     <td>Time Control:</td>
-                    <td>Ultra-Bullet(2s + 0.1s inc), Hash: 8MB</td>
+                    <td>Blitz(3m + 2s inc), Hash: 128 MB</td>
                 </tr>
                 <tr>
                     <td>Openings:</td>
@@ -437,7 +471,7 @@
                 </tr>
                 <tr>
                     <td>OS:</td>
-                    <td>Windows 10 Pro x64</td>
+                    <td>Windows 11 Pro x64</td>
                 </tr>
             <tr>
               <td>Environment:</td>
@@ -446,7 +480,15 @@
           </table>
         <!-- Rankings Section -->
         <div class="rankings-section">
-            <h1>Pawnocchio 1.9 x64(AVX2-1Pct) vs 30 Opponents</h1>
+			<h1 class="tooltip">Stockfish 15.1 x64(AVX2) vs 30 Opponents
+			  <span class="tooltiptext">
+				<strong>Gauntlet Format: Standard vs. 5% Handicap</strong><br><br>
+				<strong>Standard Group (Full Power):</strong> PlentyChess 7.0, Alexandria 8.0, Berserk 13.0 & Koivisto 9.0.<br>
+				<em>Time Control: 3m + 2s (Standard Blitz) Hash=128</em><br><br>
+				<strong>Challenger Group (Handicap):</strong> Remaining 26 engines.<br>
+				<em>Time Control: 9s + 0.1s (Only 5% of the standard time) Hash=16Mb</em><br><br>
+			  </span>
+			</h1>
         <div class="table-wrapper">
             <table id="rankingsTable">
                 <thead>
@@ -473,40 +515,38 @@
         // ============================================
         
         // Main gauntlet team (stays fixed at top)
-        const mainTeam = [0, "Pawnocchio 1.9 x64(AVX2-1Pct)", 1806.0, 3000, 2319.3, 59.3, 60.2];
-        
-        // Replace this data array with your opponent teams (Team-01 through Team-30)
+        const mainTeam = [0, "Stockfish 15.1 x64(BMI2)", 922.0, 1260, 2993.5, -0.5, 73.1];
         const data = [
-            [1, "PlentyChess 6.0.0 x64(BMI2-1Pct)", 60.5, 100, 2346.0, 42.0, 60.5],
-            [2, "Alexandria 8.0.0 x64(BMI2-1Pct)", 54.0, 100, 2273.0, -49.0, 54.0],
-            [3, "Alexandria 8.1.2 x64(BMI2-1Pct)", 53.5, 100, 2269.0, -50.0, 53.5],
-            [4, "Caissa 1.22 x64(BMI2-1Pct)", 47.0, 100, 2223.0, -52.0, 47.0],
-            [5, "Obsidian 14.0 x64(BMI2-1Pct)", 45.5, 100, 2210.0, -61.0, 45.5],
-            [6, "Astra 6.1.0 x64(BMI2-1Pct)", 45.0, 100, 2204.0, -69.0, 45.0],
-            [7, "Caissa 1.23 x64(BMI2-1Pct)", 44.0, 100, 2198.0, -65.0, 44.0],
-            [8, "Viridithas 18.0.0 x64(AVX2-1Pct)", 44.0, 100, 2194.0, -78.0, 44.0],
-            [9, "Astra 6.1.1 x64(BMI2-1Pct)", 43.5, 100, 2195.0, -63.0, 43.5],
-            [10, "Clover 9.0 x64(AVX2-1Pct)", 43.5, 100, 2217.0, 9.0, 43.5],
-            [11, "Viridithas 17.0.0 x64(AVX2-1Pct)", 43.0, 100, 2206.0, -17.0, 43.0],
-            [12, "Cinder 0.2.0 x64(AVX2-1Pct)", 40.5, 100, 2164.0, -98.0, 40.5],
-            [13, "Motor 0.9.0 x64(AVX2-1Pct)", 40.5, 100, 2181.0, -40.0, 40.5],
-            [14, "Halogen 14.0 x64(BMI2-1Pct)", 40.0, 100, 2177.0, -43.0, 40.0],
-            [15, "Horsie 1.1 x64(AVX2-1Pct)", 40.0, 100, 2181.0, -28.0, 40.0],
-            [16, "RofChade 3.1 x64(BMI2-1Pct)", 39.5, 100, 2189.0, 12.0, 39.5],
-            [17, "Renegade 1.2.0 x64(BMI2-1Pct)", 39.0, 100, 2165.0, -60.0, 39.0],
-            [18, "Revenge 4.0 x64(BMI2-1Pct)", 39.0, 100, 2177.0, -18.0, 39.0],
-            [19, "Titan 1.1 x64(AVX2-1Pct)", 38.0, 100, 2164.0, -39.0, 38.0],
-            [20, "Berserk 13.0 x64(BMI2-1Pct)", 36.5, 100, 2142.0, -77.0, 36.5],
-            [21, "Halogen 15.0 x64(BMI2-1Pct)", 36.0, 100, 2144.0, -58.0, 36.0],
-            [22, "Obsidian 16.0 x64(BMI2-1Pct)", 36.0, 100, 2127.0, -117.0, 36.0],
-            [23, "Booot 7.4 x64(BMI2-1Pct)", 35.0, 100, 2133.0, -71.0, 35.0],
-            [24, "Spaghet BologNNese 1.0 x64(BMI2-1Pct)", 34.0, 100, 2124.0, -78.0, 34.0],
-            [25, "Koivisto 9.0 x64(AVX2-1Pct)", 32.5, 100, 2104.0, -111.0, 32.5],
-            [26, "Clover 9.1 x64(AVX2-1Pct)", 31.5, 100, 2103.0, -89.0, 31.5],
-            [27, "Tarnished 4.0 x64(AVX2-1Pct)", 31.0, 100, 2099.0, -91.0, 31.0],
-            [28, "Devre 6.0 x64(AVX2-1Pct)", 30.0, 100, 2096.0, -76.0, 30.0],
-            [29, "Velvet 8.1.1 x64(AVX2-1Pct)", 28.5, 100, 2071.0, -127.0, 28.5],
-            [30, "Heimdall 1.4.1 x64(AVX2-1Pct)", 23.0, 100, 2026.0, -146.0, 23.0]
+            [1, "PlentyChess 7.0.0 x64(BMI2)", 21.0, 42, 2994.0, -5.0, 50.0],
+            [2, "Berserk 13.0 x64(AVX2)", 20.0, 42, 2975.0, 20.0, 47.6],
+            [3, "Alexandria 8.0.0 x64(BMI2)", 19.5, 42, 2966.0, 6.0, 46.4],
+            [4, "Alexandria 8.0.0 x64(BMI2-5Pct)", 13.5, 42, 2852.0, 23.0, 32.1],
+            [5, "Koivisto 9.0 x64(AVX2)", 13.5, 42, 2852.0, -31.0, 32.1],
+            [6, "Komodo Dragon 3.3 x64(AVX2-5Pct)", 13.5, 42, 2852.0, 57.0, 32.1],
+            [7, "Reckless 0.8.0 x64(AVX2-5Pct)", 13.5, 42, 2852.0, -7.0, 32.1],
+            [8, "Alexandria 8.1.12 x64(BMI2-5Pct)", 13.0, 42, 2842.0, -19.0, 30.9],
+            [9, "Integral 7.0 x64(BMI2-5Pct)", 13.0, 42, 2842.0, 87.0, 30.9],
+            [10, "PlentyChess 7.0.0 x64(BMI2-5Pct)", 13.0, 42, 2842.0, -32.0, 30.9],
+            [11, "Obsidian 16.0 x64(BMI2-5Pct)", 12.5, 42, 2833.0, 15.0, 29.7],
+            [12, "Clover 9.0 x64(AVX2-5Pct)", 12.0, 42, 2823.0, 10.0, 28.5],
+            [13, "PlentyChess 6.0.0 x64(BMI2-5Pct)", 11.5, 42, 2814.0, -14.0, 27.3],
+            [14, "Motor 0.9.0 x64(AVX2-5Pct)", 10.5, 42, 2794.0, 16.0, 25.0],
+            [15, "Quanticade 3.0c x64(BMI2-5Pct)", 10.5, 42, 2794.0, 12.0, 25.0],
+            [16, "Uralochka 3.42a x64(AVX2-5Pct)", 10.5, 42, 2794.0, 58.0, 25.0],
+            [17, "Viridithas 18.0.0 x64(AVX2-5Pct)", 10.5, 42, 2794.0, -4.0, 25.0],
+            [18, "Caissa 1.23 x64(BMI2-5Pct)", 10.0, 42, 2785.0, -34.0, 23.8],
+            [19, "Clover 8.2.1 x64(AVX2-5Pct)", 10.0, 42, 2785.0, 8.0, 23.8],
+            [20, "Horsie 1.1 x64(AVX2-5Pct)", 10.0, 42, 2785.0, 16.0, 23.8],
+            [21, "Stormphrax 7.0.0 x64(BMI2-5Pct)", 9.0, 42, 2766.0, 2.0, 21.4],
+            [22, "Cinder 0.4.1 x64(AVX2-5Pct)", 8.5, 42, 2756.0, 15.0, 20.2],
+            [23, "Astra 6.1.1 x64(BMI2-5Pct)", 8.0, 42, 2747.0, -3.0, 19.7],
+            [24, "Caissa 1.24 x64(BMI2-5Pct)", 8.0, 42, 2747.0, -71.0, 19.7],
+            [25, "Horsie 1.0 x64(AVX2-5Pct)", 8.0, 42, 2747.0, -6.0, 19.7],
+            [26, "Motor 0.7.0 x64(AVX2-5Pct)", 8.0, 42, 2747.0, 6.0, 19.7],
+            [27, "Pawnocchio 1.8 x64(AVX2-5Pct)", 7.5, 42, 2737.0, -37.0, 17.8],
+            [28, "Renegade 1.2.0 x64(BMI2-5Pct)", 7.5, 42, 2737.0, 1.0, 17.8],
+            [29, "Halogen 14.0 x64(BMI2-5Pct)", 6.5, 42, 2718.0, -16.0, 15.4],
+            [30, "Cinder 0.3.1 x64(AVX2-5Pct)", 5.5, 42, 2699.0, -58.0, 13.5],
         ];
 
         // Automatically highlight teams with top 3 positive delta values
