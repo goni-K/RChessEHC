@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="TourneyInfo.css"> -->
-    <title>Alexandria 8.0.0 x64(BMI2-5Pct)</title>
+    <title>Grail 1.0.4 x64(1Pct)</title>
     <style>
         * {
             margin: 0;
@@ -408,23 +408,20 @@
 <body>
     <div class="container">
         <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-        <h1>🏆 Alexandria 8.0.0 x64(BMI2-5Pct)</h1>
-<!-- <a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a>
-<a href="about:blank" target="_self">&larr;Back to Overview</a>
-<a href="index.html" target="_top">← Back to Overview</a>-->
- <a href="javascript:void(0)" onclick="goBackToOverview()">← Back to Overview</a>
+        <h1>🏆 Grail 1.0.4 x64(1Pct)</h1>
+<a href="../index.html" class="nav-back" style="font-weight: bold">&larr;Back to Overview</a>
             <table class="info-table">
                 <tr>
                     <td>Name:</td>
-                    <td>Alexandria 8.0.0 x64(BMI2-5Pct)</td>
+                    <td title="(1Pct) indicates the engine was tested using exactly 1% of the standard 3m + 2s Blitz time control.">Grail 1.0.4 x64(1Pct)</td>
                 </tr>
                 <tr>
                     <td>Status:</td>
-                    <td class="status-finished">2.500 games played / Tournament Finished</td>
+                    <td class="status-finished">800 games played / Tournament Finished</td>
                 </tr>
                 <tr>
                     <td>Time Control:</td>
-                    <td>Ultra-Bullet(9s + 0.1s inc), Hash: 16MB</td>
+                    <td>Ultra-Bullet(2s + 0.1s inc), Hash: 8MB</td>
                 </tr>
                 <tr>
                     <td>Openings:</td>
@@ -436,7 +433,7 @@
                 </tr>
                 <tr>
                     <td>Hardware:</td>
-                    <td>SFF-DELL: Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+                    <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
                 </tr>
                 <tr>
                     <td>OS:</td>
@@ -449,7 +446,7 @@
           </table>
         <!-- Rankings Section -->
         <div class="rankings-section">
-            <h1>Alexandria 8.0.0 x64(BMI2-5Pct) vs 30 Opponents</h1>
+            <h1 title="(1Pct) indicates the engine was tested using exactly 1% of the standard 3m + 2s Blitz time control.">Grail 1.0.4 x64(1Pct) vs 16 Opponents</h1>
         <div class="table-wrapper">
             <table id="rankingsTable">
                 <thead>
@@ -476,33 +473,24 @@
         // ============================================
         
         // Main gauntlet team (stays fixed at top)
-        const mainTeam = [0, "Alexandria 8.0.0 x64(BMI2-5Pct)", 1481.0, 2500, 2849.6, 21.6, 59.2];
+        const mainTeam = [0, "Grail 1.0.4 x64(1Pct)", 514.0, 800, 1587.9, 157.9, 64.2];
         const data = [
-            [1, "Stockfish 17.1 x64(AVX2-5Pct)", 59.5, 100, 2903.0, 29.0, 59.5],
-            [2, "Stockfish 16.1 x64(AVX2-5Pct)", 57.0, 100, 2883.0, 21.0, 57.0],
-            [3, "Stockfish 17 x64(AVX2-5Pct)", 54.0, 100, 2850.0, -19.0, 54.0],
-            [4, "Obsidian 14.0 x64(BMI2-5Pct)", 48.5, 100, 2818.0, 2.0, 48.5],
-            [5, "RubiChess 20240817 x64(BMI2-5Pct)", 47.5, 100, 2811.0, 2.0, 47.5],
-            [6, "Berserk 13.0 x64(BMI2-5Pct)", 47.0, 100, 2811.0, 13.0, 47.0],
-            [7, "Caissa 1.20 x64(BMI2-5Pct)", 46.0, 100, 2803.0, 11.0, 46.0],
-            [8, "Obsidian 15.0 x64(BMI2-5Pct)", 46.0, 100, 2798.0, -5.0, 46.0],
-            [9, "PlentyChess 3.0.0 x64(BMI2-5Pct)", 45.5, 100, 2796.0, -1.0, 45.5],
-            [10, "PlentyChess 5.0.0 x64(BMI2-5Pct)", 45.0, 100, 2788.0, -17.0, 45.0],
-            [11, "Caissa 1.21 x64(BMI2-5Pct)", 44.5, 100, 2778.0, -38.0, 44.5],
-            [12, "Motor 0.8.0 x64(AVX2-5Pct)", 40.0, 100, 2755.0, -8.0, 40.0],
-            [13, "Horsie 1.0 x64(AVX2-5Pct)", 39.5, 100, 2754.0, 1.0, 39.5],
-            [14, "Starzix 6.0 x64(AVX2-5Pct)", 39.0, 100, 2738.0, -42.0, 39.0],
-            [15, "RubiChess 20240112 x64(AVX2-5Pct)", 38.5, 100, 2734.0, -43.0, 38.5],
-            [16, "Motor 0.7.0 x64(AVX2-5Pct)", 35.0, 100, 2713.0, -28.0, 35.0],
-            [17, "Integral 5.0 x64(BMI2-5Pct)", 34.5, 100, 2708.0, -33.0, 34.5],
-            [18, "Velvet 8.1.1 x64(AVX2-5Pct)", 34.5, 100, 2712.0, -19.0, 34.5],
-            [19, "Viridithas 16.0.0 x64(AVX2-5Pct)", 34.0, 100, 2707.0, -24.0, 34.0],
-            [20, "Integral 7.0 x64(BMI2-5Pct)", 33.0, 100, 2688.0, -68.0, 33.0],
-            [21, "Quanticade 1.0f x64(BMI2-5Pct)", 32.0, 100, 2691.0, -26.0, 32.0],
-            [22, "Velvet 8.1.0 x64(AVX2-5Pct)", 32.0, 100, 2686.0, -46.0, 32.0],
-            [23, "Clover 8.1 x64(AVX2-5Pct)", 30.0, 100, 2662.0, -81.0, 30.0],
-            [24, "Stormphrax 6.0.0 x64(BMI2-5Pct)", 28.5, 100, 2654.0, -71.0, 28.5],
-            [25, "Clover 6.2 x64(AVX2-5Pct)", 28.0, 100, 2649.0, -75.0, 28.0]
+            [1, "Critter 1.6a x64(1Pct)", 40.0, 50, 1670.0, -208.0, 80.0],
+            [2, "Houdini 5.01 x64(1Pct)", 34.0, 50, 1574.0, -220.0, 68.0],
+            [3, "Rybka 4.1 x64(1Pct)", 27.5, 50, 1470.0, -127.0, 55.0],
+            [4, "Spark 1.0 x64(1Pct)", 26.0, 50, 1446.0, -118.0, 52.0],
+            [5, "Hiarcs 14 w32(1Pct)", 23.0, 50, 1398.0, -99.0, 46.0],
+            [6, "Shredder 12 x64(1Pct)", 20.0, 50, 1350.0, -98.0, 40.0],
+            [7, "Glaurung 2.2 x64(1Pct)", 18.0, 50, 1318.0, -144.0, 36.0],
+            [8, "Sjeng c't 2010 w32(1Pct)", 18.0, 50, 1318.0, -168.0, 36.0],
+            [9, "SmarThink 1.98 x64(1Pct)", 17.5, 50, 1310.0, -348.0, 35.0],
+            [10, "Chronos 1.99 x64(1Pct)", 15.5, 50, 1278.0, -117.0, 31.0],
+            [11, "Naum 4.6 x64(1Pct)", 14.5, 50, 1262.0, -174.0, 29.0],
+            [12, "Zappa Mexico II x64(1Pct)", 14.5, 50, 1262.0, -191.0, 29.0],
+            [13, "ChessTiger 2007.1 w32(1Pct)", 7.0, 50, 1142.0, -140.0, 14.0],
+            [14, "Ruffian 2.1.0 w32(1Pct)", 5.0, 50, 1110.0, -138.0, 10.0],
+            [15, "Gandalf 7.0 x64(1Pct)", 3.5, 50, 1086.0, -175.0, 7.0],
+            [16, "Fruit 2.2.1 w32(1Pct)", 2.0, 50, 1062.0, -61.0, 4.0]
         ];
 
         // Automatically highlight teams with top 3 positive delta values
@@ -648,12 +636,6 @@
 
         // Initial render with configured sort
         sortData(4);
-function goBackToOverview() {
-    // Kjo i thotë dritares prind: "Hiqe këtë m*t që ke hapur në iframe"
-    if (window.parent) {
-        window.parent.document.getElementById('content-frame').src = 'about:blank';
-    }
-}
     </script>
 </body>
 </html>
