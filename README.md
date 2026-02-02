@@ -3,7 +3,7 @@
 <div align="center">
   <br>
    <p><i>"In chess, as in time, stillness is an illusion. Every centipawn is a heartbeat in motion."</i></p>
-	<a href="https://goni-k.github.io/chess-lab/">
+	<a href="https://kovaci.netlify.app/">
     <img src="https://img.shields.io/badge/LIVE%20DEMO-ENTER%20THE%20LAB-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
   </a>
   <br>
