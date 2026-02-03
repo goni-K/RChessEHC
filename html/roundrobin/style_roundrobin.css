@@ -433,3 +433,13 @@ th, td {
   visibility: visible;
   opacity: 1; /* Fade in */
 }
+
+.btn-download {
+    padding: 4px 10px;
+    background: #fdb;
+    color: #fff; !important;
+    border-radius: 2px;
+    text-decoration: none;
+	margin-left: 100px;
+}
+
