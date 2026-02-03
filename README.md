@@ -3,8 +3,10 @@
 <div align="center">
   <br>
    <p><i>"In chess, as in time, stillness is an illusion. Every centipawn is a heartbeat in motion."</i></p>
-	<a href="https://kovaci.netlify.app/">
+    <a href="https://github.com/goni-K/chess-lab/">
     <img src="https://img.shields.io/badge/LIVE%20DEMO-ENTER%20THE%20LAB-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
+    <a href="https://kovaci.netlify.app/">
+    <img src="https://img.shields.io/website?style=for-the-badge\" alt="Website">
   </a>
   <br>
   <sub>View the engine in action via GitHub Pages</sub>
