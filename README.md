@@ -6,7 +6,8 @@
     <a href="https://github.com/goni-K/chess-lab/">
     <img src="https://img.shields.io/badge/LIVE%20DEMO-ENTER%20THE%20LAB-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
     <a href="https://kovaci.netlify.app/">
-    <img src="https://img.shields.io/website?style=for-the-badge&logo=googlechrome&logoColor=blue" alt="Website">
+      <img src="https://img.shields.io/website?url=https://domain.com/home.html&style=for-the-badge&logo=googlechrome&logoColor=blue" alt="Website">
+    </a>
   </a>
   <br>
   <sub>View the engine in action via GitHub Pages</sub>
