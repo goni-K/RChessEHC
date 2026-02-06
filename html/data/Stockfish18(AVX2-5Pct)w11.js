@@ -1,4 +1,4 @@
-﻿const mainTeam = [0, "Stockfish 18 x64(AVX2-5Pct)", 1969.5, 3.000, 2892.8, 19.8, 65.6];
+﻿const mainTeam = [0, "Stockfish 18 x64(AVX2-5Pct)", 1969.5, 3000, 2892.8, 19.8, 65.6];
 const data = [
      [1, "Reckless 0.9.0d2 x64(AVX2-5Pct)", 47.5, 100, 2860.8, -7.1, 47.5],
      [2, "PlentyChess 7.0.0 x64(BMI2-5Pct)", 44.5, 100, 2848.3, -18.6, 44.5],
@@ -31,3 +31,4 @@ const data = [
      [29, "Uralochka 3.42a x64(AVX2-5Pct)", 26.5, 100, 2718.0, -20.0, 26.5],
      [30, "Astra 6.1.1 x64(BMI2-5Pct)", 25.0, 100, 2724.8, -39.2, 25.0]
 ];
+
