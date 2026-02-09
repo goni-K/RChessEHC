@@ -1,15 +1,12 @@
 # 🏛️ Precision Series: The Architecture of Time
-
 <div align="center">
   <br>
    <p><i>"In chess, as in time, stillness is an illusion. Every centipawn is a heartbeat in motion."</i></p>
     <a href="https://goni-k.github.io/chess-lab/">
-    <img src="https://img.shields.io/badge/LIVE%20DEMO-ENTER%20THE%20LAB-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
+    <img src="https://img.shields.io/badge/LIVE%20DEMO-ENTER%20THE%20LAB-orange?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo"></a>
     <a href="https://kovaci.netlify.app/">
-      <img src="https://img.shields.io/badge/Enter-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Enter">
-    </a>
-  </a>
-  <br>
+    <img src="https://img.shields.io/badge/WEBSITE-VISIT%20MY%20SITE-007acc?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Visit My Website"></a>
+    <br>
   <sub>View the engine in action via GitHub Pages</sub>
   <br>
   </div>
