@@ -41,6 +41,7 @@ pre {
 /* Styling for the Season Champion */
 .champion {
     font-family: "Courier New", "Segoe UI", Tahoma, sans-serif;
+    font-weight: bold;
     color: #58a6ff;            /* Bright blue for the winner */
     border-left: 4px solid #ffff99;
     padding-left: 2px;
