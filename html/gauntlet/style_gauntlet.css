@@ -431,7 +431,7 @@ body.dark-mode .top-3 {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 450px;
+  width: 600px;
   background-color: #333;
   color: #fff;
   text-align: left;
