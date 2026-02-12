@@ -205,7 +205,7 @@
         <h1>♟️ Live PGN Viewer</h1>
 		<div class="pgn-input">
 			<h3>Load PGN from URL</h3>
-			<input type="text" id="pgn-url" placeholder="https://example.com/game.pgn or Google Drive link" style="width: 70%; padding: 10px;">
+			<input type="text" id="pgn-url" placeholder="https://example.com/game.pgn" style="width: 70%; padding: 10px;">
 			<button onclick="loadFromURL()" style="width: 28%;">📥 Load from URL</button>
 		</div>
         <div class="pgn-input">
@@ -263,20 +263,20 @@
         let boardFlipped = false;
 
         // Unicode chess pieces
-const pieces = {
-  'K': 'https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg',
-  'Q': 'https://upload.wikimedia.org/wikipedia/commons/1/15/Chess_qlt45.svg',
-  'R': 'https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg',
-  'B': 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Chess_blt45.svg',
-  'N': 'https://upload.wikimedia.org/wikipedia/commons/7/70/Chess_nlt45.svg',
-  'P': 'https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg',
-  'k': 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Chess_kdt45.svg',
-  'q': 'https://upload.wikimedia.org/wikipedia/commons/4/47/Chess_qdt45.svg',
-  'r': 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Chess_rdt45.svg',
-  'b': 'https://upload.wikimedia.org/wikipedia/commons/9/98/Chess_bdt45.svg',
-  'n': 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg',
-  'p': 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg'
-};
+		const pieces = {
+		  'K': 'https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg',
+		  'Q': 'https://upload.wikimedia.org/wikipedia/commons/1/15/Chess_qlt45.svg',
+		  'R': 'https://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg',
+		  'B': 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Chess_blt45.svg',
+		  'N': 'https://upload.wikimedia.org/wikipedia/commons/7/70/Chess_nlt45.svg',
+		  'P': 'https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg',
+		  'k': 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Chess_kdt45.svg',
+		  'q': 'https://upload.wikimedia.org/wikipedia/commons/4/47/Chess_qdt45.svg',
+		  'r': 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Chess_rdt45.svg',
+		  'b': 'https://upload.wikimedia.org/wikipedia/commons/9/98/Chess_bdt45.svg',
+		  'n': 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg',
+		  'p': 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg'
+		};
 
         // Initialize board
         function createBoard() {
@@ -624,7 +624,7 @@ const pieces = {
 			}, { once: true });
 		}
 		
-function loadDefaultPGNFile() {
+   function loadDefaultPGNFile() {
     const defaultFiles = ['default.pgn', 'test.pgn'];
 
     function tryFile(index) {
@@ -637,10 +637,9 @@ function loadDefaultPGNFile() {
             })
             .then(text => {
                 document.getElementById('pgn-text').value = text;
-                loadPGN(); // përdor funksionin ekzistues për të parse dhe ngarkuar lojën
+                loadPGN(); 
             })
             .catch(err => {
-                // provon tjetrin nëse nuk ekziston
                 tryFile(index + 1);
             });
     }
@@ -648,11 +647,7 @@ function loadDefaultPGNFile() {
     tryFile(0);
 }
 
-// thirret automatikisht kur faqja ngarkohet
-window.addEventListener('load', loadDefaultPGNFile);
-		
-		// Thirrja automatikisht kur ngarkohet faqja
-		window.addEventListener('load', loadDefaultPGN);
+    window.addEventListener('load', loadDefaultPGNFile);
   </script>
 </body>
 </html>
