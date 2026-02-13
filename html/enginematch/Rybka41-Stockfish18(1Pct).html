@@ -12,7 +12,7 @@
             margin: 0;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1500px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
@@ -109,11 +109,41 @@
         .draw {
             color: #6c757d;
         }
+        .match-info {
+            color: #666;
+            font-size: 1.1em;
+        }
+        .live-badge {
+            display: inline-block;
+            background: #ff4444;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        .live-badge2 {
+            display: inline-block;
+            background: #44ff44;
+            color: blue;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-left: 10px;
+            animation: pulse 3s infinite;
+        }
     </style>
 </head>
 <body>
   <div class="container">
-    <h1>🏆 Chess Engine Match: Rybka 4.1 vs Stockfish 18</h1>
+    <h1>
+	  <div class="match-info">
+		<a href="../../Pgn/PGN-Viewer.html"><span class="live-badge2">PGN-Viewer</span></a>
+		   🏆 Rybka 4.1(Blitz) vs Stockfish 18(Bullet)
+		 <a href="Rybka41-Stockfish18(1Pct)t.html" class="live-badge">View Statistic-Info</a>
+	  </div>
+    </h1>
   <!-- Tournament Info Section -->
   <div class="match-summary">
     <h2>Match Configuration</h2>
