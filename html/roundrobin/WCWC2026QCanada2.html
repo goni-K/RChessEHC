@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winter Chess World Cup 2026 | Brazil Qualifier</title>
+  <link rel="stylesheet" href="style_roundrobin.css">
+  <link rel="stylesheet" href="WC-Qualifiers.css">
+</head>
+
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+  <div class="container">
+    <div class="wrapper"> 
+      <h1>Winter Chess World Cup 2026 – Qualifier</h1> 
+
+      <!-- Tournament Info Section -->
+      <div class="info-section">
+        <h1>🏆 Canada Qualifier</h1>
+        <table class="info-table">
+          <tr>
+            <td>Name:</td>
+            <td>Canada Qualifier</td>
+          </tr>
+          <tr>
+            <td>Status:</td>
+            <td class="status-finished">900 games played
+              <a href="https://drive.google.com/uc?export=dounload&id=" class="btn-download" style="color: #1234ab">
+                Download Pgn File(Zip)
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>Time Control:</td>
+            <td title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">
+              Ultra-Bullet(9s + 0.1s inc) | Hash: 16MB | Single Thread
+            </td>
+          </tr>
+          <tr>
+            <td>Openings:</td>
+            <td><a href="../../Openings/salvo100.pgn" download="">Openings</a></td>
+          </tr>
+          <tr>
+            <td>GUI:</td>
+            <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+          </tr>
+          <tr>
+            <td>Hardware:</td>
+            <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+          </tr>
+          <tr>
+            <td>OS:</td>
+            <td>Windows 10 Pro x64</td>
+          </tr>
+          <tr>
+            <td>Environment:</td>
+            <td>Winter Chess World Cup 2026</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Rankings Section -->
+      <div class="rankings-section">
+        <h1>📊 Crosstable - Canada Qualifier</h1>
+        <div class="table-wrapper">
+          <table id="rankingsTable">
+            <thead>
+              <tr>
+                <th class="sortable" data-column="0">Rank</th>
+                <th class="sortable" data-column="1">Team</th>
+                <th class="sortable" data-column="2">Points</th>
+                <th class="sortable" data-column="3">Games</th>
+                <th class="sortable sorted-desc" data-column="4">Elo</th>
+                <th class="sortable" data-column="5">Delta</th>
+                <th class="sortable" data-column="6">Score</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="country-name">Qualified:</div>
+      <div class="country">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Score</th>
+              <th>Games</th>
+              <th>Elo</th>
+              <th class="author">Author</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="rank">1</td>
+              <td class="engine">PZChessBot 6.1 x64 (AVX2-5Pct)</td>
+              <td class="score">134.5</td>
+              <td class="games">160</td>
+              <td class="elo">2692</td>
+              <td class="author">Kevinm Lu, William Ma</td>
+            </tr>
+
+            <tr>
+              <td class="rank">2</td>
+              <td class="engine">Patricia 5.0 x64 (AVX2-5Pct)</td>
+              <td class="score">124.0</td>
+              <td class="games">160</td>
+              <td class="elo">2577</td>
+              <td class="author">Adam Kulju</td>
+            </tr>
+
+            <tr>
+              <td class="rank">3</td>
+              <td class="engine">Mr Bob 1.3.0 x64 (AVX2-5Pct)</td>
+              <td class="score">92.0</td>
+              <td class="games">180</td>
+              <td class="elo">2384</td>
+              <td class="author">Vincent Yu</td>
+            </tr>
+
+            <tr>
+              <td class="rank">4</td>
+              <td class="engine">Schooner 2.2 x64 (5Pct)</td>
+              <td class="score">84.5</td>
+              <td class="games">180</td>
+              <td class="elo">2329</td>
+              <td class="author">Dennis Sceviour</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div> <!-- mbyllet wrapper -->
+  </div>   <!-- mbyllet container -->
+
+  <script src="../data/WCWC2026QCanada.js"></script>
+  <script src="sort_roundrobin.js"></script>
+
+</body>
+</html>

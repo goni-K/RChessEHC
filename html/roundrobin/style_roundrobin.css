@@ -73,7 +73,7 @@ body.dark-mode h1 {
 }
 
 .info-table {
-    width: 98%;
+    width: 100%;
     border-collapse: collapse; /* Removes spacing between table cells */
     margin: 10px 0;
 }
@@ -180,7 +180,7 @@ body.dark-mode .rankings-section {
 }
 
 table {
-    width: 98%;
+    width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
