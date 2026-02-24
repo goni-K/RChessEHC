@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winter Chess World Cup 2026 | United Kingdom Qualifier</title>
+  <link rel="stylesheet" href="style_roundrobin.css">
+  <link rel="stylesheet" href="WC-Qualifiers.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <div class="wrapper"> 
+    <h1>Winter Chess World Cup 2026 – Qualifier</h1> 
+    <!-- Tournament Info Section -->
+    <div class="info-section">
+      <h1>🏆 United Kingdom Qualifier</h1>
+      <table class="info-table">
+        <tr>
+          <td>Name:</td>
+          <td>United Kingdom Qualifier</td>
+        </tr>
+        <tr>
+          <td>Status:</td>
+          <td class="status-finished">1.836 games played
+            <a href="https://drive.google.com/uc?export=dounload&id=" class="btn-download" style="color: #1234ab">
+              Download Pgn File(Zip)
+            </a>
+				<a href="United Kingdom Teams.html" target="_blank" style="
+					background-color: #2ecc51; 
+					color: white; 
+					padding: 5px 15px; 
+					text-decoration: none; 
+					border-radius: 4px; 
+					font-weight: bold; 
+					margin-left: 10px;
+					border: 1px solid #27ae60;
+					font-size: 13px;">
+					Qualified Teams
+				</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Time Control:</td>
+          <td title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">
+			 Ultra-Bullet(9s + 0.1s inc) | Hash: 16MB | Single Thread
+		  </td>
+        </tr>
+        <tr>
+          <td>Openings:</td>
+          <td><a href="../../Openings/Gauntlet_Openings.pgn" download=">Openings</a></td>
+        </tr>
+        <tr>
+          <td>GUI:</td>
+          <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+        </tr>
+        <tr>
+          <td>Hardware:</td>
+          <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+        </tr>
+        <tr>
+          <td>OS:</td>
+          <td>Windows 10 Pro x64</td>
+        </tr>
+        <tr>
+          <td>Environment:</td>
+          <td>Chess Engine Tournaments</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Rankings Section -->
+    <div class="rankings-section">
+      <h1>📊 Crosstable</h1>
+      <div class="table-wrapper">
+        <table id="rankingsTable">
+          <thead>
+            <tr>
+              <th class="sortable" data-column="0">Rank</th>
+              <th class="sortable" data-column="1">Team</th>
+              <th class="sortable" data-column="2">Points</th>
+              <th class="sortable" data-column="3">Games</th>
+              <th class="sortable sorted-desc" data-column="4">Elo</th>
+              <th class="sortable" data-column="5">Delta</th>
+              <th class="sortable" data-column="6">Score</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  <div class="country">
+  <div class="country-name">Qualified:</div>
+
+  <div class="qualify">UK-Team
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Score</th>
+        <th>Games</th>
+        <th>Elo</th>
+        <th class="author">Author</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <TR>
+        <td class="rank">1</td>
+        <td class="engine">Viridithas 19.0.1 x64(AVX2-5Pct)</td>
+        <td class="score">184,0</td>
+        <td class="games">204</td>
+        <td class="elo">2802</td>
+        <td class="author">Cosmo Bobak</td>
+      </TR>
+      <TR>
+        <td class="rank">2</td>
+        <td class="engine">Stormphrax 7.0.0 x64(BMI2-5Pct)</td>
+        <td class="score">180,5</td>
+        <td class="games">204</td>
+        <td class="elo">2767</td>
+        <td class="author">Conor Anstey</td>
+      </TR>
+      <TR>
+        <td class="rank">3</td>
+        <td class="engine">Tcheran 11.0 x64(AVX2-5Pct)</td>
+        <td class="score">166,0</td>
+        <td class="games">204</td>
+        <td class="elo">2610</td>
+        <td class="author">Jonathan Gilchrist</td>
+      </TR>
+      <TR>
+        <td class="rank">4</td>
+        <td class="engine">Calvin 6.1.1 x64(5Pct)</td>
+        <td class="score">156,0</td>
+        <td class="games">204</td>
+        <td class="elo">2630</td>
+        <td class="author">Dan Kelsey</td>
+      </TR>
+    </tbody>
+  </table>
+  </div>
+  <br>
+  <div class="qualify">Team: [2]
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Score</th>
+        <th>Games</th>
+        <th>Elo</th>
+        <th class="author">Author</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <TR>
+        <td class="rank">1</td>
+        <td class="engine">Akimbo 1.0.0 x64(AVX2-5Pct)</td>
+        <td class="score">152,5</td>
+        <td class="games">204</td>
+        <td class="elo">2632</td>
+        <td class="author">Jamie Whiting</td>
+      </TR>
+      <TR>
+        <td class="rank">2</td>
+        <td class="engine">Celeris 2.0.0 x64(5Pct)</td>
+        <td class="score">136,5</td>
+        <td class="games">204</td>
+        <td class="elo">2536</td>
+        <td class="author">Evan Fung</td>
+      </TR>
+      <TR>
+        <td class="rank">3</td>
+        <td class="engine">Sapling 1.2.7 x64(5Pct)</td>
+        <td class="score">128,0</td>
+        <td class="games">204</td>
+        <td class="elo">2517</td>
+        <td class="author">Tim Jones</td>
+      </TR>
+      <TR>
+        <td class="rank">4</td>
+        <td class="engine">Yukari 2025.3.4 x64(BMI2-5Pct)</td>
+        <td class="score">120,5</td>
+        <td class="games">204</td>
+        <td class="elo">2401</td>
+        <td class="author">Hannah Ravensloft</td>
+      </TR>
+    </tbody>
+  </table>
+  </div>
+  <br>
+  <div class="qualify">Team: [3]
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Score</th>
+        <th>Games</th>
+        <th>Elo</th>
+        <th class="author">Author</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <TR>
+        <td class="rank">1</td>
+        <td class="engine">Odonata 1.1.0 x64(AVX2-5Pct)</td>
+        <td class="score">106,5</td>
+        <td class="games">204</td>
+        <td class="elo">2377</td>
+        <td class="author">Andy Watkins</td>
+      </TR>
+      <TR>
+        <td class="rank">2</td>
+        <td class="engine">Lozza 10.0 x64(5Pct)</td>
+        <td class="score">102,5</td>
+        <td class="games">204</td>
+        <td class="elo">2267</td>
+        <td class="author">Colin Jenkins</td>
+      </TR>
+      <TR>
+        <td class="rank">3</td>
+        <td class="engine">Panda 1.1 x64(AVX2-5Pct)</td>
+        <td class="score">84,0</td>
+        <td class="games">204</td>
+        <td class="elo">2252</td>
+        <td class="author">Sebastiano Rebonato-Scott</td>
+      </TR>
+      <TR>
+        <td class="rank">4</td>
+        <td class="engine">Pingu 5.0.0 x64(5Pct)</td>
+        <td class="score">76,5</td>
+        <td class="games">204</td>
+        <td class="elo">2199</td>
+        <td class="author">William Ching</td>
+      </TR>
+    </tbody>
+  </table>
+  </div>
+  
+  </div>
+  <script src="United_Kingdom.js"></script>
+  <script src="sort_roundrobin.js"></script>
+
+</body>
+</html>

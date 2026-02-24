@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winter Chess World Cup 2026 | Brazil Qualifier</title>
+  <link rel="stylesheet" href="style_roundrobin.css">
+  <link rel="stylesheet" href="WC-Qualifiers.css">
+</head>
+
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+  <div class="container">
+  <div class="wrapper"> 
+      <h1>Winter Chess World Cup 2026 – Qualifier</h1> 
+    <!-- Tournament Info Section -->
+    <div class="info-section">
+      <h1>🏆 Brazil Qualifier</h1>
+      <table class="info-table">
+        <tr>
+          <td>Name:</td>
+          <td>Brazil Qualifier</td>
+        </tr>
+        <tr>
+          <td>Status:</td>
+          <td class="status-finished">720 games played
+            <a href="https://drive.google.com/uc?export=dounload&id=1ur142xc7iw3GH_-oICZOvki7r7Bd8Y6m" class="btn-download" style="color: #1234ab">
+              Download Pgn File(Zip)
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>Time Control:</td>
+          <td>
+            Ultra-Bullet(9s + 0.1s inc) | Hash: 16MB | Single Thread
+          </td>
+        </tr>
+        <tr>
+          <td>Openings:</td>
+          <td><a href="../../../Openings/salvo100.pgn" download="">Openings</a></td>
+        </tr>
+        <tr>
+          <td>GUI:</td>
+          <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+        </tr>
+        <tr>
+          <td>Hardware:</td>
+          <td>Intel i5-4570 3.20GHz(1CPU) | 8GB RAM</td>
+        </tr>
+        <tr>
+          <td>OS:</td>
+          <td>Windows 10 Pro x64</td>
+        </tr>
+        <tr>
+          <td>Environment:</td>
+          <td>Winter Chess World Cup 2026</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Rankings Section -->
+    <div class="rankings-section">
+      <h1 class="tooltip">&#128202; Crosstable<span class="info-icon">[?]</span>
+        <span class="tooltiptext">
+          <strong>(5Pct)</strong> indicates the engine was tested using exactly <strong>5%</strong> of the standard <strong>3m + 2s Blitz</strong> time control.
+        </span>
+      </h1>
+
+      <div class="table-wrapper">
+        <table id="rankingsTable">
+          <thead>
+            <tr>
+              <th class="sortable" data-column="0">Rank</th>
+              <th class="sortable" data-column="1">Team</th>
+              <th class="sortable" data-column="2">Points</th>
+              <th class="sortable" data-column="3">Games</th>
+              <th class="sortable sorted-desc" data-column="4">Elo</th>
+              <th class="sortable" data-column="5">Delta</th>
+              <th class="sortable" data-column="6">Score</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+          </tbody>
+        </table>
+      </div>
+      <div class="note"> 
+        Note: I used two engine versions in some cases because the number of teams is small. 
+        This ensures more games are played and the qualification becomes more accurate. 
+      </div>
+    </div>
+   <div class="country">
+   <div class="country-name">Qualified:</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Games</th>
+          <th>Elo</th>
+          <th class="author">Author</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="rank">1</td>
+          <td class="engine">Cinder 0.3.1 x64 (AVX2-5Pct)</td>
+          <td class="score">163.5</td>
+          <td class="games">180</td>
+          <td class="elo">2768</td>
+          <td class="author">Bruno Dutra</td>
+        </tr>
+
+        <tr>
+          <td class="rank">2</td>
+          <td class="engine">Minke 5.0.0 x64 (BMI2-5Pct)</td>
+          <td class="score">103.0</td>
+          <td class="games">180</td>
+          <td class="elo">2560</td>
+          <td class="author">Eduardo Marinho</td>
+        </tr>
+
+        <tr>
+          <td class="rank">3</td>
+          <td class="engine">Tucano 12.00 x64 (AVX2-5Pct)</td>
+          <td class="score">89.0</td>
+          <td class="games">180</td>
+          <td class="elo">2526</td>
+          <td class="author">Alcides Schulz</td>
+        </tr>
+
+        <tr>
+          <td class="rank">4</td>
+          <td class="engine">Illumina 3.0 x64 (BMI2-5Pct)</td>
+          <td class="score">57.5</td>
+          <td class="games">180</td>
+          <td class="elo">2350</td>
+          <td class="author">Thomas Mergener</td>
+        </tr>
+      </tbody>
+    </table>
+   </div>
+  </div>
+
+  <script src="Brazil.js"></script>
+  <script src="sort_roundrobin.js"></script>
+
+</body>
+
+</html>
