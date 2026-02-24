@@ -30,9 +30,13 @@
    <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
    <div class="folder" onclick="toggleFolder(this.nextElementSibling)">🔴 RUNNING TOURNAMENTS</div>
    <div class="nested">
+       <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Europe-Q.html'), this">📈 Europe Qualifier</a><br>
+       <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Asia-Q.html'), this">📈 Asia Qualifier</a><br>
    </div>
-   <div class="folder" onclick="toggleFolder(this.nextElementSibling)">🔴 Last Tournaments</div>
+   <div class="folder" onclick="toggleFolder(this.nextElementSibling)">🔴 RECENT Tournaments</div>
    <div class="nested">
+       <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/United_Kingdom-Q.html'), this">📈 United Kingdom Qualifier</a><br>
+       <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Italy-Q.html'), this">📈 Italy Qualifier</a><br>
        <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/Halogen16(BMI2-5Pct).html'), this">📈 Halogen 16.0 x64(BMI2-5Pct)</a><br>
        <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/Live/Houdini6-Stockfish18.html'), this">📈 Houdini 6(Rapid) vs Stockfish 18(Bullet)</a><br>
        <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/Tarnished50x64(AVX2-5Pct).html'), this">📈 Tarnished 5.0 x64(AVX2-5Pct)</a><br>
@@ -58,11 +62,22 @@
      <div class="nested">
        <div class="folder">Winter-2026</div>
        <div class="nested">
+           <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Dashboard-WC-w2026.html'), this">📈 Qualify Stage WC-w2026</a><br>
            <div class="folder">Qualify</div>
            <div class="nested">
-              <a href="javascript:void(0)" onclick="openFile('html/roundrobin/WCWC2026QBrazil.html'), this">📈 Brazil Qualifier</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/roundrobin/WCWC2026QCanada.html'), this">📈 Canada Qualifier</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/roundrobin/WCWC2026QSweden.html'), this">📈 Sweden Qualifier</a><br>
+           <div class="folder">USA</div>
+           <div class="nested">
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-Q.html'), this">📈 USA Final</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-St2-Q.html'), this">📈 USA Stage-2</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-St1-Q.html'), this">📈 USA Stage-1</a><br>
+           </div>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Italy-Q.html'), this">📈 Italy</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Russia-Q.html'), this">📈 Russia</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/United_Kingdom-Q.html'), this">📈 United Kingdom</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Brazil-Q.html'), this">📈 Brazil</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Canada-Q.html'), this">📈 Canada</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Sweden-Q.html'), this">📈 Sweden</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Turkey-Q.html'), this">📈 Turkey</a><br>
            </div>
        </div>
      </div>
@@ -149,6 +164,7 @@
           <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Houdini501(1Pct).html'), this">Houdini 5.01 x64(1Pct)</a>
           <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Grail104(1Pct).html'), this">Grail 1.0.4 x64(1Pct)</a>
           <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Grail103(1Pct).html'), this">Grail 1.0.3 x64(1Pct)</a>
+          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tcheran100(AVX2-1Pct).html'), this">Tcheran 10.0 x64(AVX2-1Pct)</a>
           <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tcheran80(AVX2-1Pct).html'), this">Tcheran 8.0 x64(AVX2-1Pct)</a>
           <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tcheran70(AVX2-1Pct).html'), this">Tcheran 7.0 x64(AVX2-1Pct)</a>
         </div>
@@ -203,7 +219,8 @@
 </div>
 
 <div id="main-view" style="flex: 1; background: #0d1117;">
-  <iframe id="content-frame" name="content-frame" src="about:blank" style="width: 100%; height: 100%; border: none;"></iframe>
+  <iframe id="content-frame" name="content-frame" src="Welcome.html" style="width: 100%; height: 100%; border: none;"></iframe>
+  <!-- <iframe id="content-frame" name="content-frame" src="html/gauntlet/Stockfish18(AVX2-5Pct)w11.html" style="width: 100%; height: 100%; border: none;"></iframe> -->
 </div> 
 
 <script src="script.js"></script>

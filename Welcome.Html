@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ecf0f1;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .icon { font-size: 4rem; color: #a29bfe; margin-bottom: 20px; animation: float 3s infinite; }
+        h1 { font-size: 2.5rem; font-weight: 300; }
+        h1 span { color: #a29bfe; font-weight: bold; }
+        .description { font-size: 1.2rem; color: #bdc3c7; max-width: 600px; line-height: 1.6; }
+        .quote { margin-top: 30px; font-style: italic; color: #7f8c8d; border-left: 3px solid #a29bfe; padding-left: 15px; }
+        .hint { margin-top: 40px; font-size: 0.9rem; color: #a29bfe; }
+        .language-switcher { margin-top: 30px; display: flex; gap: 30px; }
+        .flag { font-size: 45px; cursor: pointer; transition: 0.3s; filter: grayscale(40%); }
+        .flag:hover { transform: scale(1.2); filter: grayscale(0%); }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    </style>
+</head>
+<body>
+
+    <div class="icon">♟</div>
+	<h1 id="main-title">The Board is <span>Ready.</span></h1>
+    <p class="description">Welcome to your personal chess archive. Every move, every championship, and every engine analysis is stored here for you.</p>
+    
+    <div class="quote">"Chess is life in miniature." – Kasparov</div>
+    
+    <p class="hint">← Select a championship from the menu to start the analysis.</p>
+
+    <div class="language-switcher">
+        <span class="flag" onclick="changeLang('en')" title="English">🇬🇧 </span>
+        <span class="flag" onclick="changeLang('sq')" title="Shqip"> 🇦🇱</span>
+    </div>
+
+    <script>
+        const translations = {
+            sq: {
+                title: "Tabela është <span>Gati.</span>",
+                desc: "Mirësevjen në arkivën tënde personale të shahut. Çdo lëvizje, çdo kampionat dhe çdo analizë e engine-ve është ruajtur këtu për ty.",
+                quote: '"Shahu është jeta në miniaturë." – Kasparov',
+                hint: "← Zgjidh një kampionat nga menyja për të filluar analizën."
+            },
+            en: {
+                title: "The Board is <span>Ready.</span>",
+                desc: "Welcome to your personal chess archive. Every move, every tournament, and every engine analysis is stored here for you.",
+                quote: '"Chess is life in miniature." – Kasparov',
+                hint: "← Select a tournament from the menu to start the analysis."
+            }
+        };
+// Kjo siguron që faqja të jetë në anglisht në ngarkim, pa pasur nevojë të klikosh
+document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('selectedLang')) {
+        changeLang('en');
+    }
+});
+        function changeLang(lang) {
+            document.getElementById('main-title').innerHTML = translations[lang].title;
+            document.querySelector('.description').innerText = translations[lang].desc;
+            document.querySelector('.quote').innerText = translations[lang].quote;
+            document.querySelector('.hint').innerText = translations[lang].hint;
+        }
+    </script>
+</body>
+</html>

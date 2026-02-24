@@ -132,3 +132,4 @@ function viewEloList() {
             document.getElementById('list-display').innerHTML = '<p style="color: red;">Gabim gjatë Fetch: Skedari nuk u gjet.</p>';
         });
 }
+
