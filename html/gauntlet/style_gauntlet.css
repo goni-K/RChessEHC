@@ -463,3 +463,71 @@ body.dark-mode .top-3 {
     text-decoration: none;
 	margin-left: 100px;
 }
+
+.crosstable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.crosstable th,
+.crosstable td {
+    border: 1px solid #444;
+    padding: 6px 10px;
+    text-align: center;
+}
+
+.crosstable th {
+    background: #222;
+    color: #eee;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.crosstable tr:nth-child(even) td {
+    background: #1a1a1a;
+}
+
+.crosstable tr:nth-child(odd) td {
+    background: #111;
+}
+
+.crosstable td {
+    color: #ddd;
+}
+
+.crosstable tr:hover td {
+    background: #333;
+}
+
+pre.crosstable {
+    background: #232;
+    color: #ddd;
+    padding: 12px 16px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-family: "Courier New", "Consolas",  monospace;
+    font-size: 16px;
+    line-height: 1.35;
+    white-space: pre;      /* keep exact spacing */
+    overflow-x: auto;      /* allow horizontal scroll if needed */
+}
+
+pre.crosstable .header {
+    color: #fff;
+    font-weight: bold;
+}
+
+pre.crosstable .engine {
+    color: #9ecbff;        /* light blue for engine names */
+}
+
+pre.crosstable .score {
+    color: #f0d48a;        /* soft gold for scores */
+}
+
+pre.crosstable .dash {
+    color: #666;           /* muted dash for diagonal */
+}
