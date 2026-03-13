@@ -37,23 +37,33 @@ Fatalii, Hamsters, Amyan, AnMon, Yace, Nejmet">
    </div>
    <div class="folder">Elo List</div>
    <div class="nested">
-       <a href="javascript:void(0)" style="margin:0; color: #000;" onclick="openFile('html/elo/FullEloList.html'), this">Mixed Elo List</a><br>
+       <a href="javascript:void(0)" style="margin:0; color: #000;" onclick="openFile('html/elo/FullEloList.html'), this">Full Elo List(Blitz+Bullet)</a><br>
        <a href="javascript:void(0)" style="margin:0; color: #ff0;" onclick="openFile('html/elo/EloRatingList_5.html'), this">Elo List(5% of Blitz TimeControl)</a><br>
-       <a href="javascript:void(0)" style="margin:0; color: #ff0;" onclick="openFile('html/elo/BestVersions5.html'), this">Best Versions(5% of Blitz TimeControl)</a><br>
+       <a href="javascript:void(0)" style="margin:0; color: #ff0;" onclick="openFile('html/elo/BestVersions5.html'), this">📈 Best Versions(5% of Blitz TimeControl)</a><br>
        <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/elo/EloRatingList_1.html'), this">Elo List(1% of Blitz TimeControl)</a><br>
    </div>
+   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
    <div class="folder">Engines</div>
    <div class="nested">
        <a href="javascript:void(0)" style="margin:0; color: #fff;" onclick="openFile('Engines/DownloadChessEngines.html'), this">Download Chess Engines</a><br>
    </div>
    <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
+   <div class="folder">PGN</div>
+   <div class="nested">
+       <a href="javascript:void(0)" style="margin:0; color: #fff;" onclick="openFile('Pgn/PGNViewer.html'), this">📈 PGN-Viewer</a><br>
+   </div>
+   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
    <div class="folder" onclick="toggleFolder(this.nextElementSibling)">🔴 RUNNING TOURNAMENTS</div>
    <div class="nested">
+     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-4).html'), this">📈 WorlCup-2026 Qualify(Board-4)</a>
+     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-3).html'), this">📈 WorlCup-2026 Qualify(Board-3)</a>
+     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-2).html'), this">📈 WorlCup-2026 Qualify(Board-2)</a>
      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-1).html'), this">📈 WorlCup-2026 Qualify(Board-1)</a>
-     <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Hobbes100(AVX2-5Pct).html'), this">📈 Hobbes 0.9.0 x64(AVX2-5Pct)</a>
    </div>
+   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
    <div class="folder" onclick="toggleFolder(this.nextElementSibling)">🔴 RECENT Tournaments</div>
    <div class="nested">
+     <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Hobbes100(AVX2-5Pct).html'), this">📈 Hobbes 1.0.0 x64(AVX2-5Pct)</a>
      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless090(AVX2-5Pct).html'), this">📈 Reckless 0.9.0 x64(AVX2-5Pct)</a>
      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria900(BMI2-5Pct).html'), this">📈 Alexandria 9.0.0 x64(BMI2-5Pct)</a>
      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Europe-Q.html'), this">📈 Europe Qualifier</a><br>
@@ -67,9 +77,11 @@ Fatalii, Hamsters, Amyan, AnMon, Yace, Nejmet">
      <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/Stockfish18(AVX2-5Pct)w11.html'), this">📈 Stockfish 18 x64(AVX2-5Pct)</a><br>
      <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/Testing_Houdini6_vs_Elite.html'), this">📈 Testing Houdini 6(Handicap)</a><br>
    </div>
+   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
    <div class="folder" style="color: var(--accent);">Tournaments</div>
-   <div class="nested" id="thesi-i-turneve">
-   <div class="folder">Ultra-Bullet(9s+0.1)</div>
+   <div class="nested" id="tourneys">
+   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
+   <div class="folder">Ultra-Bullet(9s + 0.1s)</div>
    <div class="nested">
      <div class="folder">Seasons</div>
      <div class="nested">
@@ -92,13 +104,33 @@ Fatalii, Hamsters, Amyan, AnMon, Yace, Nejmet">
               <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-St1-Q.html'), this">📈 USA Stage-1</a><br>
            </div>
               <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Italy-Q.html'), this">📈 Italy</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Russia-Q.html'), this">📈 Russia</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Germany-Q.html'), this">📈 Germany</a><br>
               <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/United_Kingdom-Q.html'), this">📈 United Kingdom</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Russia-Q.html'), this">📈 Russia</a><br>
               <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Brazil-Q.html'), this">📈 Brazil</a><br>
               <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Canada-Q.html'), this">📈 Canada</a><br>
               <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Sweden-Q.html'), this">📈 Sweden</a><br>
               <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Turkey-Q.html'), this">📈 Turkey</a><br>
+              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Northern_Europe-Q.html'), this">📈 Northern Europe</a><br>
            </div>
+           <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Participants WC-w2026.html'), this">📈 Participants WC-w2026</a><br>
+           <div class="folder">Finals</div>
+        <div class="nested">
+          <div class="folder">Qualify</div>
+          <div class="nested">
+            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-4).html'), this">📈 Qualify Board-4</a>
+            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-3).html'), this">📈 Qualify Board-3</a>
+            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-2).html'), this">📈 Qualify Board-2</a>
+            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-1).html'), this">📈 Qualify Board-1</a>
+          </div>                                                                                                                  
+          <div class="folder">Finals</div>                                                                                        
+          <div class="nested">                                                                                                    
+            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-4).html'), this">📈 Qualify Board-4</a>
+            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-3).html'), this">📈 Qualify Board-3</a>
+            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-2).html'), this">📈 Qualify Board-2</a>
+            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-1).html'), this">📈 Qualify Board-1</a>
+          </div>
+        </div>
        </div>
      </div>
      <div class="folder">Testing</div>
@@ -169,7 +201,8 @@ Fatalii, Hamsters, Amyan, AnMon, Yace, Nejmet">
        </div>
      </div>
    </div>
-   <div class="folder">Ultra-Bullet(2+0.1)</div>
+   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
+   <div class="folder">Ultra-Bullet(2s + 0.1s)</div>
     <div class="nested">
       <div class="folder">Seasons</div>
       <div class="nested">
@@ -196,8 +229,8 @@ Fatalii, Hamsters, Amyan, AnMon, Yace, Nejmet">
         </div>
       </div>
     </div>
-
-    <div class="folder">Blitz</div>
+   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
+    <div class="folder">Blitz(3m + 2s)</div>
     <div class="nested">
       <div class="folder">Seasons</div>
       <div class="nested">
@@ -210,7 +243,7 @@ Fatalii, Hamsters, Amyan, AnMon, Yace, Nejmet">
       </div>
      </div>
     </div>
-
+   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
     <div class="folder">Blitz-Bullet</div>
     <div class="nested">
       <div class="folder">Testing</div>
@@ -229,7 +262,7 @@ Fatalii, Hamsters, Amyan, AnMon, Yace, Nejmet">
       </div>
     </div>
   </div> 
-
+   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
     <div id="tree-content" style="flex: 1; overflow-y: auto; padding: 10px;"></div>
     <div id="participants-footer" style="padding: 15px; border-top: 1px solid #30363d; background: #263b42; flex-shrink: 0;">
       <div style="color: #c9d1d9; font-size: 13px; font-weight: bold; margin-bottom: 5px;">Participants:</div>
