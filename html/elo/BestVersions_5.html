@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Engines Ultra-Bullet(5% Blitz TC) Elo Rating | Best Versions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_nav.css">
+  </head>
+  <body>
+  <!-- NAV -->
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <div class="nav-links">
+        <a href="../../index.html" target="_top">Home</a>
+        <a href="#" class="active">Best Versions [Bullet 5%]</a></a>
+        <a href="../../html/elo/FullEloList.html">Global Elo List</a>
+        <a href="../../html/elo/EloRatingList_5.html">Full History [Bullet 5%]</a>
+        <a href="../../html/elo/EloRatingList_Blitz.html">Best Versions[Blitz]</a>
+        <a href="../../html/elo/BestVersions_1.html">Best Versions [Ultra 1%]</a>
+        <a href="../gauntlet/Raphael320(BMI2-5Pct).html">RECENT Tournaments</a>
+        <a href="../WC-w2026/Winter-2026-CETC.html">Chess Engine Team Championship</a>
+        <a href="../WC-w2026/Participants WC-w2026.html">WC-2026 Participants</a>
+        <a href="../Seasons/FirstSeasonU5.html">Seasons</a>
+        <a href="../../Engines/DownloadChessEngines.html">Engines</a>
+      </div>
+    </div>
+  </nav>
+
+ <div class="container">
+    <div class="rankings-section">
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+      <h2 class="tooltip">&#128202; Ultra-Bullet(5% Blitz TC) Elo Rating | Best Versions(2026.03.24)<span class="info-icon">[?]</span>
+        <span class="tooltiptext">
+          <span class="tt-blue">Benchmark Info:</span><br>
+          This Elo list uses <strong>Critter 1.6a x64</strong> (~23.000 games) as the anchor engine. Baseline is adjusted from <strong>2280</strong> Elo for this <strong>5%</strong> environment.<br>
+          <span class="tt-orange">TC: 9s + 0.1s | Hash: 16Mb Single Thread</span><br>
+        </span>
+      </h2>
+    <div class="table-wrapper">
+	 <table id="bestversions">
+		<thead>
+			<tr>
+				<th class="sortable" data-column="0">Rank</th>
+				<th class="sortable" data-column="1">Name</th>
+				<th class="sortable sorted-desc" data-column="2">Elo</th>
+				<th class="sortable" data-column="3">Games</th>
+                <th class="sortable" data-column="4">Oppo. Elo</th>
+			</tr>
+		</thead>
+		<tbody id="tableBody"></tbody>
+	</table>
+    </div>
+  </div>
+  </div>
+
+  <script src="BestVersions_5.js"></script>
+  <script src="sort_elo_b.js"></script>
+
+</body>
+</html>
