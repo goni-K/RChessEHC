@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rapid-Blitz Symmetry Trial | Houdini 6 Rapid</title>
+    <link rel="stylesheet" href="style_roundrobin.css">
+ </head>
+ <body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    
+    <div class="container">
+        <!-- Tournament Info Section -->
+        <div class="info-section">
+            <h1>🏆 The Rapid-Blitz Symmetry Trial</h1>
+            <table class="info-table">
+                <tr>
+                    <td>Name:</td>
+                    <td>Mixed Protocol Rapid vs Blitz Challenge</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td class="status-finished">RUNNING: 540/1.300 games played</td>
+                </tr>
+                <tr>
+                    <td>Time Control:</td>
+                    <td>Rapid(15m + 10s inc), Hash: 512 MB</td>
+                </tr>
+                <tr>
+                    <td>Openings:</td>
+                    <td><a href="../../Openings/TCEC-SuFi29.pgn" download="">Openings</a></td>
+                </tr>
+                <tr>
+                    <td>GUI:</td>
+                    <td><a href="http://www.playwitharena.de/" target="_blank">ArenaGUI 3.5.1</a></td>
+                </tr>
+                <tr>
+                    <td>Hardware:</td>
+                    <td>Intel i5-4570 3.20GHz | 8GB RAM</td>
+                </tr>
+                <tr>
+                    <td>OS:</td>
+                    <td>Windows 10 Pro x64</td>
+                </tr>
+            <tr>
+              <td>Environment:</td>
+              <td>Rapid & Blitz Challenge</td>
+            </tr>
+            </table>
+        </div>
+
+        <!-- Rankings Section -->
+        <div class="rankings-section">
+			<h1 class="tooltip">The Rapid-Blitz Symmetry Trial
+			  <span class="tooltiptext">
+				<strong>Round-Robin Format: Rapid vs. Blitz Handicap</strong><br><br>
+				<em>Time Control: 15m + 10s (Standard Rapid) Hash=512</em><br>
+				<strong>Standard Group (Full Power):</strong> Houdini 6.03.<br><br>
+				<strong>Challenger Group Blitz (Handicap):</strong> Remaining 25 engines.<br>
+				<em>Time Control: 3m + 2s (Only 20% of the standard time) Hash=256Mb</em><br><br>
+			  </span>
+ 		    </h1>
+		  <div class="table-wrapper">
+			<table id="rankingsTable">
+				<thead>
+					<tr>
+						<th class="sortable" data-column="0">Rank</th>
+						<th class="sortable" data-column="1" title="(5Pct) indicates the engine was tested using exactly 5% of the standard 3m + 2s Blitz time control.">Team</th>
+						<th class="sortable" data-column="2">Points</th>
+						<th class="sortable" data-column="3">Games</th>
+						<th class="sortable sorted-desc" data-column="4">Elo</th>
+						<th class="sortable" data-column="5">Delta</th>
+						<th class="sortable" data-column="6">Score</th>
+					</tr>
+				</thead>
+				<tbody id="tableBody">
+				</tbody>
+			</table>
+		</div>
+      </div>
+   </div>
+
+	<script src="../data/Houdini6RapidTop25Blitz.js"></script>
+	<script src="sort_roundrobin.js"></script>
+
+</body>
+</html>
