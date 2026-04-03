@@ -1,0 +1,89 @@
+/* ── TEAM COLORS ── */
+.usa      { background: #1A1A2E; border-bottom: 3px solid #00D4FF; }
+.italy    { background: #003F87; border-bottom: 3px solid #EF2B2D; }
+.germany  { background: #003300; border-bottom: 3px solid #DD0000; }
+.uk       { background: #012169; border-bottom: 3px solid #C8102E; }
+.russia   { background: #aa89bb; border-bottom: 3px solid #D52B1E; }
+.asia     { background: #396082; border-bottom: 3px solid #FFDE00; }
+.europe   { background: #003399; border-bottom: 3px solid #FFCC00; }
+.easteurope   { background: #1A5276; border-bottom: 3px solid #F4D03F; }
+.turkey   { background: #830077; border-bottom: 3px solid #FFFFFF; }
+.czechoslovakia { background: #97141A; border-bottom: 3px solid #11457E; }
+.brazil   { background: #003DA5; border-bottom: 3px solid #FFD700; }
+.balkan   { background: #2a9C3B; border-bottom: 3px solid #FEDF00; }
+.centraleurope { background: #CE2939; border-bottom: 3px solid #477050; }
+.sweden   { background: #006AA7; border-bottom: 3px solid #FECC02; }
+.netherlands { background: #808880; border-bottom: 3px solid #21468B; }
+.iberian  { background: #0066aa; border-bottom: 3px solid #FF0000; }
+.canada   { background: #870078; border-bottom: 3px solid #FFFFFF; }
+.world    { background: #002868; border-bottom: 3px solid #BF0A30; }
+.northerneurope { background: #008CA5; border-bottom: 3px solid #CD212A; }
+.america  { background: #B22234; border-bottom: 3px solid #3C3B6E; }
+.france   { background: #002395; border-bottom: 3px solid #ED2939; }
+.wildcard { background: #4A235A; border-bottom: 3px solid #D4AC0D; }
+
+/* ── GRID ── */
+.teams-grid {
+	background: linear-gradient(90deg, #a8dadc 0%, #ffffff 100%);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 20px;
+    padding: 12px;
+}
+
+/* ── CARD ── */
+.n-card { 
+    padding: 16px 20px;
+    border-radius: 8px; 
+    border: 1px solid #30363d; 
+    overflow: hidden; 
+    transition: 0.2s; 
+    color: #fff;
+}
+.n-card:hover { 
+   border-color: #58a6ff; 
+   transform: translateY(-2px); 
+}
+
+.n-link {
+    display: block;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffa;
+    text-decoration: none;
+    margin-bottom: 6px;
+}
+.b-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    padding: 2px 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+.elo-val { 
+   font-weight: 800; 
+   color: yellow
+}
+h1 { 
+   background: linear-gradient(90deg, #a8da00 0%, #00da8a 100%);
+   text-align: center; 
+   color: blue
+ }
+
+.spider-link {
+    position: fixed;
+    top: 20px;
+    z-index: 9999;
+    display: inline-block !important;
+    background-color: #161b22;
+    color: #f0ff00 !important;
+    padding: 10px 18px;
+    border: 2px solid #58a6ff;
+    border-radius: 6px;
+    font-family: 'Segoe UI', Impact, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+    transition: 0.2s ease-in-out;
+}

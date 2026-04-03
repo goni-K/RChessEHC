@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WC w2026 · Board 1 · RChessEHC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style_nav.css">
+<style>
+:root{
+  --bg:#07090e;--bg2:#0c0f18;--bg3:#111520;--bg4:#181d2c;--bg5:#1f2638;
+  --border:rgba(255,255,255,0.055);--border2:rgba(255,255,255,0.11);--border3:rgba(255,255,255,0.2);
+  --text:#cdd2e4;--text2:#6e7a98;--text3:#a030a0;
+  --gold:#d4a843;--gold2:#f0c96a;--silver:#8fa8c0;--bronze:#b07040;
+  --win:rgba(46,168,84,0.2);--win-t:#3ed870;
+  --loss:rgba(196,52,52,0.17);--loss-t:#e05555;
+  --draw:rgba(110,122,160,0.14);--draw-t:#8892b0;
+  --diag:#040609;
+  --pos:#3ed870;--neg:#e05555;
+}
+[data-theme="light"]{
+  --bg:#edf0f8;--bg2:#fff;--bg3:#e4e8f5;--bg4:#d8dff0;--bg5:#ccd4e8;
+  --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);--border3:rgba(0,0,0,0.22);
+  --text:#111828;--text2:#465070;--text3:#8892b0;
+  --gold:#9a6e18;--gold2:#b88020;--silver:#607080;--bronze:#885030;
+  --win:rgba(30,130,70,0.12);--win-t:#1a6830;
+  --loss:rgba(160,40,40,0.10);--loss-t:#841818;
+  --draw:rgba(80,90,130,0.10);--draw-t:#4a5070;
+  --diag:#dde2f0;
+  --pos:#1a6830;--neg:#841818;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* HERO */
+.hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:28px 0 22px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 200% at 100% 50%,rgba(74,143,255,0.04) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 120% at 0% 60%,rgba(212,168,67,0.04) 0%,transparent 55%),
+             repeating-linear-gradient(90deg,transparent 0,transparent 59px,rgba(255,255,255,0.008) 60px);
+  pointer-events:none;}
+.container{max-width:1920px;margin:0 auto;padding:0 18px;}
+.hero-in{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:18px;position:relative;}
+.hero-lbl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.hero-lbl::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.7;}
+.hero-title{font-family:'Rajdhani',sans-serif;font-size:clamp(22px,3.2vw,44px);font-weight:700;line-height:1.05;letter-spacing:-0.01em;}
+.hero-title em{color:var(--gold);font-style:normal;}
+.hero-sub{font-size:12px;color:var(--text2);margin-top:6px;display:flex;flex-wrap:wrap;gap:12px;}
+.hero-sub span{display:flex;align-items:center;gap:4px;}
+.hero-sub span::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0.5;}
+.hero-cards{display:flex;gap:10px;flex-wrap:wrap;}
+.card{background:var(--bg3);border:1px solid var(--border2);border-radius:7px;padding:9px 14px;min-width:76px;}
+.card-l{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:3px;}
+.card-v{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;line-height:1;}
+.card-s{font-size:10px;color:var(--text3);margin-top:1px;}
+.badge-fin{display:inline-flex;align-items:center;gap:5px;background:rgba(62,216,112,0.12);border:1px solid rgba(62,216,112,0.25);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:0.08em;color:var(--win-t);}
+
+/* CONTROLS */
+.cbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px 0;position:sticky;top:0;z-index:60;}
+.ci{display:flex;gap:7px;align-items:center;flex-wrap:wrap;}
+.cl{font-family:'Barlow Condensed',sans-serif;font-size:10px;color:var(--text3);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+.vbs{display:flex;gap:3px;}
+.vb{font-family:'Barlow Condensed',sans-serif;background:var(--bg3);border:1px solid var(--border2);color:var(--text2);border-radius:4px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:0.07em;cursor:pointer;transition:all 0.14s;}
+.vb:hover{color:var(--text);}
+.vb.on{background:var(--gold);color:#07090e;border-color:var(--gold);}
+.sep{width:1px;height:18px;background:var(--border2);margin:0 2px;}
+select{font-family:'Barlow Condensed',sans-serif;background:var(--bg3);border:1px solid var(--border2);color:var(--text);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:600;outline:none;cursor:pointer;transition:border-color 0.14s;}
+select:focus{border-color:var(--gold);}
+.tbtn{font-family:'Barlow Condensed',sans-serif;background:var(--bg3);border:1px solid var(--border2);color:var(--text2);border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;letter-spacing:0.08em;cursor:pointer;transition:all 0.14s;margin-left:auto;}
+.tbtn:hover{color:var(--text);border-color:var(--gold);}
+.leg{display:flex;gap:8px;align-items:center;}
+.li{display:flex;align-items:center;gap:3px;font-family:'Barlow Condensed',sans-serif;font-size:10px;color:var(--text3);font-weight:700;letter-spacing:0.07em;text-transform:uppercase;}
+.ld{width:8px;height:8px;border-radius:2px;}
+.lw{background:var(--win);}.ll{background:var(--loss);}.ldraw{background:var(--draw);}
+
+/* MAIN */
+.main{padding:18px 0 56px;}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.mb20{margin-bottom:20px;}
+.tw{overflow-x:auto;border-radius:8px;border:1px solid var(--border);}
+
+/* STANDINGS TABLE */
+table.st{border-collapse:collapse;background:var(--bg2);width:100%;}
+table.st thead th{font-family:'Barlow Condensed',sans-serif;background:var(--bg3);color:var(--text3);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:7px 10px;text-align:right;border-bottom:2px solid var(--border2);white-space:nowrap;}
+table.st thead th.lh{text-align:left;}
+table.st thead th.ch{text-align:center;}
+table.st tbody tr{border-bottom:1px solid var(--border);}
+table.st tbody tr:last-child{border-bottom:none;}
+table.st tbody tr:hover td{background:rgba(255,255,255,0.016)!important;}
+td.rk{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--text3);text-align:center;padding:6px 8px;min-width:28px;}
+td.rk.g{color:var(--gold);}td.rk.s{color:var(--silver);}td.rk.b{color:var(--bronze);}
+td.en{padding:6px 12px 6px 10px;white-space:nowrap;}
+.en-n{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:0.02em;}
+.en-t{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+td.nm{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);text-align:right;padding:6px 10px;white-space:nowrap;}
+td.sc{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--gold2);text-align:right;padding:6px 10px;min-width:80px;}
+td.sc .sf{font-size:10px;color:var(--text3);font-weight:400;}
+.sc-bar{width:60px;height:2px;background:var(--bg5);border-radius:2px;margin:3px 0 0 auto;}
+.sc-fill{height:100%;border-radius:2px;background:var(--gold);}
+td.pct{font-family:'JetBrains Mono',monospace;font-size:11px;text-align:right;padding:6px 10px;white-space:nowrap;}
+td.elo{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--silver);text-align:right;padding:6px 10px;}
+td.sta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);text-align:right;padding:6px 10px;}
+td.dlt{font-family:'JetBrains Mono',monospace;font-size:11px;text-align:right;padding:6px 10px;font-weight:600;}
+.dpos{color:var(--pos);}.dneg{color:var(--neg);}.dzro{color:var(--text3);}
+
+/* BAR */
+.elo-bar{width:80px;height:3px;background:var(--bg5);border-radius:2px;margin:3px 0 0 auto;}
+.elo-fill{height:100%;border-radius:2px;background:var(--silver);}
+
+/* CROSSTABLE */
+table.ct{border-collapse:collapse;background:var(--bg2);width:100%;}
+table.ct thead{position:sticky;top:0;z-index:30;}
+table.ct thead tr.hr th{background:var(--bg3);color:var(--text3);font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 2px;text-align:center;border-bottom:2px solid var(--border2);white-space:nowrap;}
+table.ct thead tr.hr th.lh{text-align:left;padding-left:10px;min-width:158px;}
+table.ct thead tr.hr th.rh{text-align:right;padding-right:8px;min-width:66px;}
+table.ct thead tr.nr th{background:var(--bg4);color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;padding:3px 2px;text-align:center;border-bottom:1px solid var(--border2);}
+table.ct thead tr.nr th.lh{text-align:left;padding-left:10px;}
+table.ct tbody tr{border-bottom:1px solid var(--border);}
+table.ct tbody tr:last-child{border-bottom:none;}
+table.ct tbody tr:hover td:not(.dc):not(.diag){background:rgba(255,255,255,0.016)!important;}
+td.rk2{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--text3);text-align:center;padding:5px 6px;min-width:28px;}
+td.rk2.g{color:var(--gold);}td.rk2.s{color:var(--silver);}td.rk2.b{color:var(--bronze);}
+td.nc{padding:5px 10px 5px 8px;white-space:nowrap;}
+.nc-n{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--text);letter-spacing:0.02em;}
+.nc-e{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+td.scc{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--gold2);text-align:center;padding:5px 6px;white-space:nowrap;min-width:66px;}
+td.scc .sf{font-size:10px;color:var(--text3);font-weight:400;}
+.sc-bar2{width:36px;height:2px;background:var(--bg5);border-radius:2px;margin:2px auto 0;}
+.sc-fill2{height:100%;border-radius:2px;background:var(--gold);}
+td.sbc{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);text-align:right;padding:5px 8px;}
+td.res{padding:2px 1px;text-align:center;min-width:30px;max-width:30px;width:30px;cursor:default;}
+td.res:hover:not(.diag){filter:brightness(1.3);}
+td.diag{background:var(--diag)!important;}
+.ri{display:flex;gap:1px;justify-content:center;align-items:center;flex-wrap:nowrap;}
+.bit{width:6px;height:16px;border-radius:1px;transition:transform 0.08s;}
+td.res:hover .bit{transform:scaleY(1.4);}
+.bw{background:var(--win);}.bl{background:var(--loss);}.bd{background:var(--draw);}
+/* score view */
+.ct.vs td.res .ri,.ct.vs td.res .sq,.ct.vs td.diag .ri{display:none;}
+.ct.vs td.res::after{content:attr(data-sc);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--text2);}
+.ct.vs td.res.cw::after{color:var(--win-t);}.ct.vs td.res.cl::after{color:var(--loss-t);}.ct.vs td.res.cd::after{color:var(--draw-t);}
+.ct.vs td.diag::after{content:'···';color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:10px;}
+/* seq view */
+.ct.vq td.res .ri{display:none;}
+.ct.vb td.res .sq,.ct.vs td.res .sq{display:none;}
+.sq{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:-0.5px;color:var(--text2);line-height:1;}
+/* highlight */
+tr.hlr td:not(.dc):not(.diag){background:rgba(212,168,67,0.035)!important;}
+tr.hlr td.diag{background:rgba(212,168,67,0.055)!important;}
+th.hlc{color:var(--gold)!important;}
+td.hlc{box-shadow:inset 0 0 0 1px rgba(212,168,67,0.2);}
+td.dc,th.dc{width:4px;min-width:4px;max-width:4px;background:var(--bg5)!important;padding:0!important;}
+
+/* TOOLTIP */
+.tt{position:fixed;z-index:999;background:var(--bg4);border:1px solid var(--border3);border-radius:8px;padding:10px 13px;font-family:'Barlow Condensed',sans-serif;font-size:12px;color:var(--text);pointer-events:none;opacity:0;transition:opacity 0.12s;min-width:220px;max-width:300px;box-shadow:0 8px 32px rgba(0,0,0,0.55);}
+.tt.show{opacity:1;}
+.tt-h{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;margin-bottom:7px;padding-bottom:6px;border-bottom:1px solid var(--border2);display:flex;justify-content:space-between;align-items:baseline;}
+.tt-hn{color:var(--gold);}
+.tt-hr{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;}
+.tt-row{display:flex;justify-content:space-between;gap:10px;padding:2px 0;font-size:11px;}
+.tt-l{color:var(--text2);}
+.tt-v{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--text);}
+.tw{color:var(--win-t);}.tl{color:var(--loss-t);}.td{color:var(--draw-t);}
+.tt-seq{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;margin-top:7px;padding-top:6px;border-top:1px solid var(--border2);color:var(--text2);}
+.tt-bits{display:flex;gap:2px;margin-top:5px;}
+.tt-bit{width:11px;height:13px;border-radius:2px;}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:13px 0;margin-top:4px;}
+.fi{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.fl{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--gold);}
+.fr{font-size:10px;color:var(--text3);}
+.fr a{color:var(--text3);text-decoration:none;}
+.fr a:hover{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="../../../index.html" target="_top" class="nav-logo">RChess<span>EHC</span></a>
+        <button class="vb on" data-v="vb">Bars</button>
+        <button class="vb" data-v="vq">Sequence</button>
+        <button class="vb" data-v="vs">Score</button>
+    <div class="nav-links">
+      <a href="../../../index.html" target="_top">Home</a>
+      <a href="#" class="active">Board-1</a>
+      <a href="#ctable" style="color: white; text-decoration: none;">Technical Specifications</a>
+      <a href="../Participants WC-w2026.html">WC-2026 Participants</a>
+      <a href="Final/WC-w2026-Board1.html"></a>
+      <a href="../../elo/FullEloList.html">Global Elo List (Mixed)</a>
+      <a href="../../Seasons/FirstSeasonU5.html">Seasons</a>
+      <a href="../../Engines/DownloadChessEngines.html">Engines</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-in">
+      <div>
+        <div class="hero-lbl">WorldCup 2026 Final &middot; Board 1 &middot; Ultra-Bullet</div>
+        <div class="hero-title"><em>WC w2026</em> &mdash; Board 1 Standings</div>
+        <div class="hero-sub">
+          <span>9s + 0.1s</span>
+          <span>16MB Hash</span>
+          <span>1 Thread</span>
+          <span>2208 games played</span>
+          <span>24 engines</span>
+        </div>
+      </div>
+      <div class="hero-cards">
+        <div class="card"><div class="card-l">Winner</div><div class="card-v" style="color:var(--gold)">Reckless</div><div class="card-s">135.5 / 184</div></div>
+        <div class="card"><div class="card-l">Engines</div><div class="card-v">24</div><div class="card-s">round robin</div></div>
+        <div class="card"><div class="card-l">Games</div><div class="card-v">2208</div><div class="card-s">184 each</div></div>
+        <div class="card"><div class="card-l">Status</div><div class="card-v" style="font-size:13px;padding-top:4px"><span class="badge-fin">&#10003; Finished</span></div><div class="card-s">&nbsp;</div></div>
+        <div class="card"><div class="card-l">Top Elo</div><div class="card-v" style="color:var(--silver)">2879</div><div class="card-s">Stockfish 18</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cbar">
+  <div class="container">
+    <div class="ci">
+      <span class="cl">View:</span>
+      <div class="vbs">
+        <button class="vb on" data-v="vb">Bars</button>
+        <button class="vb" data-v="vq">Sequence</button>
+        <button class="vb" data-v="vs">Score</button>
+      </div>
+      <div class="sep"></div>
+      <span class="cl">Highlight:</span>
+      <select id="hlSel"><option value="-1">&mdash; none &mdash;</option></select>
+      <div class="sep"></div>
+      <div class="leg">
+        <div class="li"><div class="ld lw"></div>Win</div>
+        <div class="li"><div class="ld ldraw"></div>Draw</div>
+        <div class="li"><div class="ld ll"></div>Loss</div>
+      </div>
+      <button class="tbtn" id="tbtn">&#9728; Light</button>
+    </div>
+  </div>
+</div>
+
+<main class="main">
+<div class="container">
+
+  <div class="mb20">
+    <div class="sec-title">Standings</div>
+    <div class="tw">
+      <table class="st" id="stbl"></table>
+    </div>
+  </div>
+
+  <div>
+    <div class="sec-title" id="ctable">Crosstable</div>
+    <div class="tw">
+      <table class="ct vb" id="ct"></table>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fi">
+      <div class="fl">RChessEHC &mdash; Board 1</div>
+      <div class="fr">Project Lead: Agron Kovaci &middot; <a href="mailto:covaci61g@gmail.com">covaci61g@gmail.com</a> &middot; WC w2026 Final</div>
+    </div>
+  </div>
+</footer>
+
+<div class="tt" id="tt"></div>
+
+<script>
+const E=[
+ {n:"Reckless 0.9.0",    team:"Russia",       pts:135.5,gm:184,elo:2863.3,sta:2859.0,dlt:+4.4, pct:73.6,sb:11785.00},
+ {n:"Stockfish 18(5%)",  team:"World",        pts:130.0,gm:184,elo:2879.1,sta:2879.0,dlt:+0.1, pct:70.6,sb:11368.00},
+ {n:"PlentyChess 7.0.0", team:"Germany",      pts:129.0,gm:184,elo:2856.1,sta:2854.0,dlt:+2.1, pct:70.1,sb:10995.00},
+ {n:"Alexandria 9.0.0",  team:"Italy",        pts:122.0,gm:184,elo:2831.5,sta:2830.0,dlt:+1.5, pct:66.3,sb:10324.00},
+ {n:"Caissa 1.24",       team:"Europe",       pts:115.0,gm:184,elo:2790.8,sta:2788.0,dlt:+2.9, pct:62.5,sb:9648.70},
+ {n:"Berserk 13.0",      team:"USA",          pts:114.0,gm:184,elo:2792.1,sta:2790.0,dlt:+2.2, pct:61.9,sb:9676.70},
+ {n:"Clover 9.1",        team:"Balkan",       pts:110.0,gm:184,elo:2788.6,sta:2788.0,dlt:+0.7, pct:59.7,sb:9291.50},
+ {n:"Viridithas 19.0.1", team:"Utd.Kingdom",  pts:108.5,gm:184,elo:2774.6,sta:2773.0,dlt:+1.7, pct:58.9,sb:9081.00},
+ {n:"Pawnocchio 1.9.2",  team:"Sweden",       pts:108.0,gm:184,elo:2790.5,sta:2791.0,dlt:-0.5, pct:58.6,sb:9049.20},
+ {n:"Starzix 6.0",       team:"Iberian",      pts:103.5,gm:184,elo:2771.6,sta:2772.0,dlt:-0.4, pct:56.2,sb:8691.50},
+ {n:"Renegade 1.2.0",    team:"Cent.Europe",  pts:98.0, gm:184,elo:2727.3,sta:2725.0,dlt:+2.4, pct:53.2,sb:8197.00},
+ {n:"Quanticade 3.0c",   team:"Czechoslovak.",pts:97.5, gm:184,elo:2772.6,sta:2776.0,dlt:-3.4, pct:52.9,sb:8126.00},
+ {n:"Cinder 0.3.1",      team:"Brazil",       pts:96.5, gm:184,elo:2753.3,sta:2755.0,dlt:-1.6, pct:52.4,sb:8029.70},
+ {n:"Astra 6.1.1",       team:"Turkey",       pts:92.5, gm:184,elo:2754.3,sta:2758.0,dlt:-3.6, pct:50.2,sb:7770.70},
+ {n:"Clarity 8.0.0",     team:"USA(2)",       pts:84.0, gm:184,elo:2712.3,sta:2715.0,dlt:-2.6, pct:45.6,sb:6879.70},
+ {n:"Booot 7.4",         team:"East Europe",  pts:83.0, gm:184,elo:2685.1,sta:2685.0,dlt:+0.2, pct:45.1,sb:6968.50},
+ {n:"Rebel 16.3",        team:"USA(3)",       pts:72.5, gm:184,elo:2664.6,sta:2667.0,dlt:-2.4, pct:39.4,sb:6180.20},
+ {n:"PZChessBot 6.1",    team:"Canada",       pts:70.5, gm:184,elo:2657.5,sta:2660.0,dlt:-2.5, pct:38.3,sb:5744.00},
+ {n:"Stockfish 18(1%)",  team:"Wildcard",     pts:69.5, gm:184,elo:2403.8,sta:2384.0,dlt:+19.9,pct:37.7,sb:5835.50},
+ {n:"Arasan 25.3",       team:"USA(3)",       pts:67.5, gm:184,elo:2658.0,sta:2662.0,dlt:-4.0, pct:36.6,sb:5456.70},
+ {n:"Altair 7.0.0",      team:"Asia",         pts:66.0, gm:184,elo:2649.3,sta:2653.0,dlt:-3.7, pct:35.8,sb:5328.70},
+ {n:"Akimbo 1.0.0",      team:"Utd.Kingdom2", pts:64.0, gm:184,elo:2631.3,sta:2634.0,dlt:-2.6, pct:34.7,sb:5177.20},
+ {n:"Superultra 2.0",    team:"USA(4)",       pts:41.5, gm:184,elo:2549.3,sta:2554.0,dlt:-4.6, pct:22.5,sb:3376.00},
+ {n:"Smallbrain 7.0",    team:"Germany(2)",   pts:29.5, gm:184,elo:2505.8,sta:2512.0,dlt:-6.2, pct:16.2,sb:2454.00},
+];
+
+const R=[
+"········|0===1=10|====1=1=|=0===1=1|01==1=11|=1==1=10|10===11=|01==1=1=|1===1111|=1==1=1=|=1==1=0=|1=11=101|1=111111|11===1=1|=1=11=11|1=111111|1===1101|=1=11=1=|1=1==0=1|=11=1111|111==111|1=11=1=1|=11=1111|1111111=",
+"1===0=01|········|=1==101=|=0==11=1|=11=1110|1==011=1|11==01=1|1====1==|=1====10|=111111=|1==1111=|=1=10===|=1==0010|1====1=1|=1111=11|101=01=1|=1==0=1=|=111=11=|1=1=1111|1=01=1=1|1==1=011|11111110|1111=111|=111111=",
+"====0=0=|=0==010=|········|0===1===|==1=1===|101==1==|====1=11|1===01==|1====111|01==1=1=|1===11=1|1====1==|1===11=1|01==1=1=|==1=1=11|=1=11=1=|1====1=1|=1111=11|11=11=1=|111=11=1|=1=1111=|1=1==111|1=1=1111|11111111",
+"=1===0=0|=1==00=0|1===0===|········|=0=110==|1=0==100|==1=1110|1==1=111|00=01=1=|========|1====1==|=1===1=1|=1======|01==1=10|=010=111|=11===1=|=1==1=1=|1=1==111|11=111==|1=11=111|11111=1=|=111111=|11111111|1=1111=1",
+"10==0=00|=00=0001|==0=0===|=1=001==|········|10==1110|=1===00=|00==0===|=======1|=1====1=|1=1=0==1|1==11=11|==0==1=1|=1==10=1|=1==1===|=1===1==|1==1=1=1|=11=1=1=|11=11==1|1=0=1111|11111=1=|1=1=11=1|1==11111|=1=11111",
+"=0==0=01|0==100=0|010==0==|0=1==011|01==0001|········|==1=0=1=|===11==0|========|0==11=1=|=1====1=|1==111==|0=0=01=1|111====1|=1=11===|1====1=1|01=1=111|=11==11=|=11=11=1|======11|1==10=01|111=0111|11===11=|11111111",
+"01===00=|00==10=0|====0=00|==0=0001|=0===11=|==0=1=0=|········|==0=01=0|=0===1=1|=00==1==|=1111101|11==111=|11=110=0|01==1110|1=1==001|=10=1=1=|=11=111=|1=10==11|0==11111|1====1=1|=11==11=|=1=====1|11===1=1|1=111111",
+"10==0=0=|0====0==|0===10==|0==0=000|11==1===|===00==1|==1=10=1|········|=0==0=0=|0===01==|=1==1=1=|=0===001|1==1===0|10=====1|=11=10==|10=101=1|101=11=1|=1=111=1|======01|=1==1===|1=11=111|1=11=1=1|1111111=|=1111111",
+"0===0000|=0====01|0====000|11=10=0=|=======0|========|=1===0=0|=1==1=1=|········|=0==01=1|======0=|==1===0=|=======1|====01=1|1=1=0111|10===101|=1=11===|1=11=10=|10=11=01|=1==11=1|1=11===1|=1=11=11|1111111=|1==11111",
+"=0==0=0=|=000000=|10==0=0=|========|=0====0=|1==00=0=|=11==0==|1===10==|=1==10=0|········|====1=0=|====0===|111=1011|01======|0==1====|111===1=|1==11===|01=1==11|0==1=011|11=111==|=11==11=|1===0===|1=011111|1=111111",
+"=0==0=1=|0==0000=|0===00=0|0====0==|0=0=1==0|=0====0=|=0000010|=0==0=0=|======1=|====0=1=|········|======11|1=01==11|=======0|=1==1110|1==100=1|=0=101=1|=1=11===|10==1101|=111111=|1=11=1=1|=01==1=1|1===1011|==11111=",
+"0=00=010|=0=01===|0====0==|=0===0=0|0==00=00|0==000==|00==000=|=1===110|==0===1=|====1===|======00|········|=1====10|1=1=0=01|====1=01|1===1==1|=======1|1=11=1==|=0=11==1|11==111=|1=1=011=|=1=11==1|011=1=11|1=1=11=1",
+"0=000000|=0==1101|0===00=0|=0======|==1==0=0|1=1=10=0|00=001=1|0==0===1|=======0|000=0100|0=10==00|=0====01|········|1===0=1=|1====111|=01=0==0|11=1111=|10===1==|100=1=11|===1=11=|0==1111=|=1==1111|=1=11110|=11111=1",
+"00===0=0|0====0=0|10==0=0=|10==0=01|=0==01=0|000====0|10==0001|01=====0|====10=0|10======|=======1|0=0=1=10|0===1=0=|········|====01==|==0==00=|=10=1===|====1==1|011==111|1=1=0111|=101==01|=1=1==11|1==11==1|1==111=1",
+"=0=00=00|=0000=00|==0=0=00|=101=000|=0==0===|=0=00===|0=0==110|=00=01==|0=0=1000|1==0====|=0==0001|====0=10|0====000|====10==|········|==0=11==|=00=1110|1====01=|110=1101|======11|=1=11110|=======0|111=11=1|=1=1111=",
+"0=000000|010=10=0|=0=00=0=|=00===0=|=0===0==|0====0=0|=01=0=0=|01=010=0|01===010|000===0=|0==011=0|0===0==0|=10=1==1|==1==11=|==1=00==|········|=1======|======0=|1=1==101|=01===01|=1=1=01=|=1===0=0|=111=1==|1011=1=1",
+"0===0010|=0==1=0=|0====0=0|=0==0=0=|0==0=0=0|10=0=000|=00=000=|010=00=0|=0=00===|0==00===|=1=010=0|=======0|00=0000=|=01=0===|=11=0001|=0======|········|=00==10=|=0==0101|01=010==|10=10=0=|=1=11==0|=1=1111=|1=11==0=",
+"=0=00=0=|=000=00=|=0000=00|0=0==000|=00=0=0=|=00==00=|0=01==00|=0=000=0|0=00=01=|10=0==00|=0=00===|0=00=0==|01===0==|====0==0|0====10=|======1=|=11==01=|········|=1111=00|10=0===0|=====010|1===0=1=|10===0=1|11111=11",
+"0=0==1=0|0=0=0000|00=00=0=|00=000==|00=00==0|=00=00=0|1==00000|======10|01=00=10|1==0=100|01==0010|=1=00==0|011=0=00|100==000|001=0010|0=0==010|=1==1010|=0000=11|········|=1=00==1|0===0=01|=1=11=10|1111=1==|1=101==0",
+"=00=0000|0=10=0=0|000=00=0|0=00=000|0=1=0000|======00|0====0=0|=0==0===|=0==00=0|00=000==|=000000=|00==000=|===0=00=|0=0=1000|======00|=10===10|10=101==|01=1===1|=0=11==0|········|0==101=1|1=1=0===|11===011|=1=1=11=",
+"000==000|0==0=100|=0=0000=|00000=0=|00000=0=|0==01=10|=00==00=|0=00=000|0=00===0|=00==00=|0=00=0=0|0=0=100=|1==0000=|=010==10|=0=00001|=0=0=10=|01=01=1=|=====101|1===1=10|1==010=0|········|010=11==|1=====1=|1=11=1=1",
+"0=00=0=0|00000001|0=0==000|=000000=|0=0=00=0|000=1000|=0=====0|0=00=0=0|=0=00=00|0===1===|=10==0=0|=0=00==0|=0==0000|=0=0==00|=======1|=0===1=1|=0=00==1|0===1=0=|=0=00=01|0=0=1===|101=00==|········|=1==1=11|1=1==111",
+"=00=0000|0000=000|0=0=0000|00000000|0==00000|00===00=|00===0=0|0000000=|0000000=|0=100000|0===0100|100=0=00|=0=00001|0==00==0|000=00=0|=000=0==|=0=0000=|01===1=0|0000=0==|00===100|0=====0=|=0==0=00|········|=11==1==",
+"0000000=|=000000=|00000000|0=0000=0|=0=00000|00000000|0=000000|=0000000|0==00000|0=000000|==00000=|0=0=00=0|=00000=0|0==000=0|=0=0000=|0100=0=0|0=00==1=|00000=00|0=010==1|=0=0=00=|0=00=0=0|0=0==000|=00==0==|········",
+];
+
+const N=E.length, MAXPTS=184;
+const MAXELO=Math.max(...E.map(e=>e.elo));
+const MINELO=Math.min(...E.map(e=>e.elo));
+
+// Matrix: split each row by |
+const M=R.map(row=>row.split('|'));
+
+function csc(s){
+  if(!s||s==='········')return null;
+  let p=0,g=0;
+  for(const c of s){if(c==='1'){p++;g++;}else if(c==='0'){g++;}else if(c==='='){p+=0.5;g++;}}
+  return{pts:p,games:g};
+}
+function cc(s){
+  if(!s||s==='········')return'ce';
+  const r=csc(s);if(!r||!r.games)return'ce';
+  if(r.pts>r.games/2)return'cw';if(r.pts<r.games/2)return'cl';return'cd';
+}
+function rbits(s){
+  if(!s||s==='········')return'<span style="color:var(--text3);font-size:10px">&#183;&#183;&#183;</span>';
+  return[...s].map(c=>`<div class="bit ${c==='1'?'bw':c==='0'?'bl':'bd'}"></div>`).join('');
+}
+const SH=E.map(e=>{
+  const n=e.n;
+  return n.length<=8?n:n.replace(/[\s.]/g,'').substring(0,7);
+});
+
+let HL=-1;
+
+/* ── STANDINGS ── */
+function buildStandings(){
+  const t=document.getElementById('stbl');
+  let h='<thead><tr>';
+  h+='<th class="ch" style="width:28px">#</th>';
+  h+='<th class="lh">Engine</th>';
+  h+='<th>Score</th>';
+  h+='<th>Score %</th>';
+  h+='<th>Elo</th>';
+  h+='<th>Sta.Elo</th>';
+  h+='<th title="Elo Delta">&#916;Elo</th>';
+  h+='<th>S-B</th>';
+  h+='</tr></thead><tbody>';
+  E.forEach((e,i)=>{
+    const rk=i===0?'rk g':i===1?'rk s':i===2?'rk b':'rk';
+    const barW=Math.round(e.pts/MAXPTS*100);
+    const eloBarW=Math.round((e.elo-MINELO+50)/(MAXELO-MINELO+50)*100);
+    const dltCls=e.dlt>0?'dpos':e.dlt<0?'dneg':'dzro';
+    const dltStr=(e.dlt>0?'+':'')+e.dlt.toFixed(1);
+    const pctCls=e.pct>=50?'style="color:var(--win-t)"':e.pct<40?'style="color:var(--loss-t)"':'';
+    h+=`<tr>
+      <td class="${rk}">${i+1}</td>
+      <td class="en" title="Team: ${e.team}">
+        <div class="en-n">${e.n}</div>
+        <div class="en-t">${e.team}</div>
+      </td>
+      <td class="sc">
+        <div>${e.pts}<span class="sf">/${MAXPTS}</span></div>
+        <div class="sc-bar"><div class="sc-fill" style="width:${barW}%"></div></div>
+      </td>
+      <td class="pct" ${pctCls}>${e.pct.toFixed(1)}%</td>
+      <td class="elo">
+        <div>${e.elo.toFixed(1)}</div>
+        <div class="elo-bar"><div class="elo-fill" style="width:${eloBarW}%"></div></div>
+      </td>
+      <td class="sta">${e.sta.toFixed(1)}</td>
+      <td class="dlt ${dltCls}">${dltStr}</td>
+      <td class="nm">${e.sb.toFixed(2)}</td>
+    </tr>`;
+  });
+  t.innerHTML=h+'</tbody>';
+}
+
+/* ── CROSSTABLE ── */
+function buildXT(){
+  const tbl=document.getElementById('ct');
+  let h='<thead><tr class="hr">';
+  h+='<th style="width:26px">#</th>';
+  h+='<th class="lh">Engine</th>';
+  h+='<th>Score</th>';
+  h+='<th class="dc"></th>';
+  for(let j=0;j<N;j++){
+    const hl=j===HL?' class="hlc"':'';
+    h+=`<th${hl} title="${E[j].n} | ${E[j].pts}/${MAXPTS} | Elo:${E[j].elo}">${SH[j]}</th>`;
+  }
+  h+='<th class="dc"></th>';
+  h+='<th class="rh">S-B</th>';
+  h+='</tr>';
+  h+='<tr class="nr"><th></th><th class="lh"></th><th></th><th class="dc"></th>';
+  for(let j=0;j<N;j++){
+    const hl=j===HL?' style="color:var(--gold)"':'';
+    h+=`<th${hl}>${j+1}</th>`;
+  }
+  h+='<th class="dc"></th><th></th></tr></thead><tbody>';
+
+  E.forEach((e,i)=>{
+    const rk=i===0?'rk2 g':i===1?'rk2 s':i===2?'rk2 b':'rk2';
+    const hlr=i===HL?' class="hlr"':'';
+    const bw=Math.round(e.pts/MAXPTS*100);
+    h+=`<tr${hlr}>`;
+    h+=`<td class="${rk}">${i+1}</td>`;
+    h+=`<td class="nc"><div class="nc-n">${e.n}</div><div class="nc-e">${e.team} &middot; Elo ${e.elo.toFixed(0)}</div></td>`;
+    h+=`<td class="scc"><div>${e.pts}<span class="sf">/${MAXPTS}</span></div><div class="sc-bar2"><div class="sc-fill2" style="width:${bw}%"></div></div></td>`;
+    h+='<td class="dc"></td>';
+
+    for(let j=0;j<N;j++){
+      const hlc=j===HL?' hlc':'';
+      const s=M[i][j];
+      if(!s||s==='········'){
+        h+=`<td class="res diag${hlc}"><div class="ri"><span style="color:var(--text3);font-size:10px">&#183;&#183;&#183;</span></div></td>`;
+        continue;
+      }
+      const cls=cc(s);
+      const sc=csc(s);
+      const sv=sc?sc.pts.toFixed(1):'-';
+      h+=`<td class="res ${cls}${hlc}" data-sc="${sv}" data-i="${i}" data-j="${j}">`;
+      h+=`<div class="ri">${rbits(s)}</div>`;
+      h+=`<span class="sq">${s}</span>`;
+      h+='</td>';
+    }
+    h+='<td class="dc"></td>';
+    h+=`<td class="sbc">${e.sb.toFixed(2)}</td>`;
+    h+='</tr>';
+  });
+  tbl.innerHTML=h+'</tbody>';
+
+  document.querySelectorAll('td.res:not(.diag)').forEach(td=>{
+    td.addEventListener('mouseenter',showTT);
+    td.addEventListener('mouseleave',hideTT);
+    td.addEventListener('mousemove',moveTT);
+  });
+}
+
+/* TOOLTIP */
+const tt=document.getElementById('tt');
+function showTT(e){
+  const i=parseInt(this.dataset.i),j=parseInt(this.dataset.j);
+  const s=M[i][j];
+  const sc=csc(s);
+  const cls=cc(s);
+  const sv=sc?sc.pts.toFixed(1)+' / '+sc.games:'—';
+  const res=cls==='cw'?'Win':'cl'==='cl'?'Loss':'Draw';
+  const resCls=cls==='cw'?'tw':cls==='cl'?'tl':'td';
+  const bits=[...s].map(c=>`<div class="tt-bit ${c==='1'?'bw':c==='0'?'bl':'bd'}"></div>`).join('');
+  // elo diff
+  const eloD=(E[i].elo-E[j].elo).toFixed(0);
+  const eloStr=eloD>0?'+'+eloD:eloD;
+  tt.innerHTML=`
+    <div class="tt-h">
+      <span class="tt-hn">${E[i].n}</span>
+      <span class="tt-v ${resCls}">${cls==='cw'?'Win':cls==='cl'?'Loss':'Draw'}</span>
+    </div>
+    <div class="tt-row"><span class="tt-l">vs</span><span class="tt-v">${E[j].n}</span></div>
+    <div class="tt-row"><span class="tt-l">Score</span><span class="tt-v">${sv}</span></div>
+    <div class="tt-row"><span class="tt-l">Elo (i)</span><span class="tt-v">${E[i].elo.toFixed(1)}</span></div>
+    <div class="tt-row"><span class="tt-l">Elo (j)</span><span class="tt-v">${E[j].elo.toFixed(1)}</span></div>
+    <div class="tt-row"><span class="tt-l">Elo diff</span><span class="tt-v">${eloStr}</span></div>
+    <div class="tt-row"><span class="tt-l">Teams</span><span class="tt-v">${E[i].team} vs ${E[j].team}</span></div>
+    <div class="tt-seq">${s}</div>
+    <div class="tt-bits">${bits}</div>`;
+  tt.classList.add('show');
+  moveTT(e);
+}
+function hideTT(){tt.classList.remove('show');}
+function moveTT(e){
+  const w=tt.offsetWidth,h2=tt.offsetHeight;
+  const vw=window.innerWidth,vh=window.innerHeight;
+  let tx=e.clientX+14,ty=e.clientY-10;
+  if(tx+w>vw-8)tx=e.clientX-w-14;
+  if(ty+h2>vh-8)ty=vh-h2-8;
+  tt.style.left=tx+'px';tt.style.top=ty+'px';
+}
+
+/* HIGHLIGHT */
+const hlSel=document.getElementById('hlSel');
+E.forEach((e,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1}. ${e.n}`;hlSel.appendChild(o);});
+hlSel.addEventListener('change',()=>{HL=parseInt(hlSel.value);buildXT();});
+
+/* VIEW */
+document.querySelectorAll('.vb').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.vb').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    const ct=document.getElementById('ct');
+    ct.classList.remove('vb','vq','vs');
+    ct.classList.add(btn.dataset.v);
+  });
+});
+
+/* THEME */
+document.getElementById('tbtn').addEventListener('click',()=>{
+  const dark=document.documentElement.dataset.theme==='dark';
+  document.documentElement.dataset.theme=dark?'light':'dark';
+  document.getElementById('tbtn').textContent=dark?'\u263E Dark':'\u2600 Light';
+});
+
+buildStandings();
+buildXT();
+</script>
+</body>
+</html>

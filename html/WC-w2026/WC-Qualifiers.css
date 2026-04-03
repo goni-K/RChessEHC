@@ -1,0 +1,87 @@
+/* --- Variablat për Temat --- */
+:root {
+  /* Light Mode */
+  --bg-color: #f4f7f6;
+  --container-bg: #ffffff;
+  --border-color: #d1d5db;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --accent-color: #b8860b; /* Gold/Bronze për Elo */
+  --engine-font: 'Courier New', monospace;
+}
+
+.dark-mode {
+  /* Dark Mode (Si ai stili yt origjinal por i rafinuar) */
+  --bg-color: #0d1117;
+  --container-bg: #151821;
+  --border-color: #262a36;
+  --text-main: #d0d0d0;
+  --text-muted: #b3b7c5;
+  --accent-color: #e0b973;
+}
+
+/* --- Stilimi i Katrorit të Shtetit/Turneut --- */
+.country {
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 18px;
+  transition: all 0.3s ease;
+}
+
+.country-name {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+/* --- Tabela e Rezultateve --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th.author {
+  text-align: left !important;
+  color: var(--header-text) !important; /* Këtu vdes ngjyra e kuqe! */
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  }
+td.rankX { 
+  width: 40px; 
+  color: var(--text-muted); 
+  font-weight: bold;
+}
+
+td.engine { 
+  width: 40%;
+  font-family: var(--engine-font); 
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+td.scoreX, td.gamesX, td.eloX { 
+  text-align: right; 
+  color: var(--text-main); 
+}
+
+td.eloX { 
+  color: var(--accent-color) !important; 
+  font-weight: bold;
+}
+
+td.author { 
+  color: var(--text-muted); 
+  text-align: left !important;
+  font-style: italic;
+}
+
+/* Një efekt i lehtë kur kalon mausin sipër rreshtit */
+tr:hover {
+  background: rgba(224, 185, 115, 0.05);
+}
