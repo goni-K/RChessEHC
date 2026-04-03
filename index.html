@@ -3,267 +3,512 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess Engine Tournaments – Gauntlet, Round Robin & World Cup</title>
   <link rel="icon" href="faviconK.png" type="image/ico">
-  <meta name="Author" content="Agron Kovaci">
-  <meta name="Keywords" content="Stockfish, Reckless, PlentyChess, Alexandria, Houdini, Rybka, Ruffian, Obsidian, Caissa, RubiChess, Pawnocchio, Berserk, Komodo, Clover, Viridithas, Hobbes, Starzix, 
-Motor, Horsie, Astra, Tarnished, Stormphrax, Cinder, Integral, Halogen, Renegade, Velvet, Koivisto, Lizard, Clarity, Revenge,   
-RofChade, Tcheran, Booot, Rebel, Arasan, PZChessBot, Devre, Altair, Igel, Akimbo, Seer, Turbulence, Calvin, Black, Heimdall, Patricia, Elixir, Prune, 
-Peacekeeper, Rice, SlowChess, Pawn, Equisetum, ChessCpp, Willow, Superultra, Minke, Tucano, Wasp, Celeris, Carp, Midnight, Sapling, 
-Smallbrain, Saturn, Serendipity, Sirius, Cheng, Winter, Nemorino, Texel, Eleanor, Molybdenum, Marvin, Weiawaga, Frozenight, Schneckbert, 
-Starfish, Zangdar, BlackCore, Schoenemann, Petrel, Arcanum, Pedantic, BitBit, Pedone, Ethereal, Lunar, RukChess, Nalwald, Mr Bob, Quirky, Lambergar, 
-Xiphos, Odonata, Avalanche, Clockwork, Stash, Minic, Oxide, Counter, Lozza, Illumina, Lynx, Schooner, Expositor, Princhess, Raphael, 
-Dog, Defenchess, Maelstrom, Andscacs, Fritz, Svart, Cadie, Isa, StockNemo, Critter, DanaSah, Laser, Shredder, Fizbo, Weiss, Gull, Drofa, Panda, 
-Protej, Grail, Sturddle, Demolito, Simbelmyne, Mantissa, Chiron, iCE, Kobra, Pingu, Nirvana, Seredina, Priessnitz, Vajolet2, Atlas, Myrddin, 
-LGEvolution, Hannibal, Senpai, EveAnn, SmarThink, Wahoo, Meltdown, Invictus, Perseus, Inanis, Bit-Genie, Seawall, Orion, Monolith, Protector, 
-Polaris, Amoeba, Naum, 4ku, Lc0, Cheers, Dirty, Topple, Rodent, Rengar, Weak, Deuterium, Sentinel, Hiarcs, Admete, Bobcat, Puffin, 
-Crafty, Vengeance, Gogobello, Cheese, Hakkapeliitta, Ceibo, Leorik, Delocto, Sjeng, ChessBrainVB, Spark, Murka, Gaviota, Qapla, OliThink, Nemo, Thinker, 
-Quazar, DisasterArea, Asymptote, ZuriChess, Chess-3, Axiom, tomitankChess, FrancescaMAD, Glaurung, Belette, Shallow, Euwe, Spike, Zappa, Crab, Onno, 
-The Baron, OctoChess, GnuChess, Javelin, Zevra, Rhetoric, Frenzee, Bread, Chronos, Junior, Arminius, BugChess2, Mess, Bison, 
-Revolver, ChessTiger, Trinket, Fridolin, Fruit, Reyna, Daydreamer, Delfi, Alaric, Blunder, Gandalf, Lux, Pharaon, Ufim, Blocky, 
-Fatalii, Hamsters, Amyan, AnMon, Yace, Nejmet">
-    <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Global Chess Engine Database: Comprehensive Gauntlet & Round Robin results for chess engines including Stockfish, Reckless, PlentyChess, Alexandria, Obsidian, Caissa, RubiChess, Pawnocchio, Berserk, Komodo, Clover, Viridithas, Hobbes, Starzix, Motor, Horsie, Astra, Tarnished, Stormphrax, Cinder, Integral, Halogen, Renegade, Velvet, Koivisto, Lizard, Clarity, Revenge and more.">
-    <title>Chess Engine Tournaments | Gauntlet, Round Robin, World Cup & Olympiads</title>
-</head>
-<body>
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
 
-<div id="main-layout" style="display: flex; height: 100vh; overflow: hidden;">
-  <div id="explorer" style="width: 350px; border-right: 1px solid #30363d; display: flex; flex-direction: column;">
+<!-- Sidebar / Drawer -->
+<div id="sidebar" class="sidebar">
 
-   <div class="header">
-    <h3 style="margin:0; color:var(--accent);">Chess Engine Tournaments</h3>
-    <input type="text" id="search" placeholder="Search engines or seasons..." style="width:90%; margin-top:10px; background:#0d1117; border:1px solid #30363d; color:white; padding:5px;">
-      <div id="search-results" style="background:#161b22; position:relative; width:100%; z-index:100;"></div>     
-   </div>
-   <div class="folder">Elo List</div>
-   <div class="nested">
-       <a href="javascript:void(0)" style="margin:0; color: #000;" onclick="openFile('html/elo/FullEloList.html'), this">Full Elo List(Blitz+Bullet)</a><br>
-       <a href="javascript:void(0)" style="margin:0; color: #ff0;" onclick="openFile('html/elo/EloRatingList_5.html'), this">Elo List(5% of Blitz TimeControl)</a><br>
-       <a href="javascript:void(0)" style="margin:0; color: #ff0;" onclick="openFile('html/elo/BestVersions5.html'), this">📈 Best Versions(5% of Blitz TimeControl)</a><br>
-       <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/elo/EloRatingList_1.html'), this">Elo List(1% of Blitz TimeControl)</a><br>
-   </div>
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
-   <div class="folder">Engines</div>
-   <div class="nested">
-       <a href="javascript:void(0)" style="margin:0; color: #fff;" onclick="openFile('Engines/DownloadChessEngines.html'), this">Download Chess Engines</a><br>
-   </div>
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
-   <div class="folder">PGN</div>
-   <div class="nested">
-       <a href="javascript:void(0)" style="margin:0; color: #fff;" onclick="openFile('Pgn/PGNViewer.html'), this">📈 PGN-Viewer</a><br>
-   </div>
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
-   <div class="folder" onclick="toggleFolder(this.nextElementSibling)">🔴 RUNNING TOURNAMENTS</div>
-   <div class="nested">
-     <a href="html/WC-w2026/Final/WC-w2026-Board1.html">📈 WorldCup-2026 Final Board 1</a>
-     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-1).html'), this">📈 Finals Board-1</a>
-     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-4).html'), this">📈 WorlCup-2026 Qualify(Board-4)</a>
-   </div>
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
-   <div class="folder" onclick="toggleFolder(this.nextElementSibling)">🔴 RECENT Tournaments</div>
-   <div class="nested">
-     <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Hobbes100(AVX2-5Pct).html'), this">📈 Hobbes 1.0.0 x64(AVX2-5Pct)</a>
-     <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless090(AVX2-5Pct).html'), this">📈 Reckless 0.9.0 x64(AVX2-5Pct)</a>
-     <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria900(BMI2-5Pct).html'), this">📈 Alexandria 9.0.0 x64(BMI2-5Pct)</a>
-     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Europe-Q.html'), this">📈 Europe Qualifier</a><br>
-     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Asia-Q.html'), this">📈 Asia Qualifier</a><br>
-     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/United_Kingdom-Q.html'), this">📈 United Kingdom Qualifier</a><br>
-     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Italy-Q.html'), this">📈 Italy Qualifier</a><br>
-     <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/Live/Houdini6-Stockfish18.html'), this">📈 Houdini 6(Rapid) vs Stockfish 18(Bullet)</a><br>
-     <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/enginematch/Rybka41-Stockfish18(1Pct).html'), this">📈 Rybka 4.1(Blitz) vs Stockfish 18(Bullet)</a><br>
-     <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/TheTrialofRybka.html'), this">📈 The Trial of Rybka 4.1</a><br>
-     <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/Stockfish18(AVX2-1Pct)w11.html'), this">📈 Stockfish 18 x64(AVX2-1Pct)</a><br>
-     <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/Stockfish18(AVX2-5Pct)w11.html'), this">📈 Stockfish 18 x64(AVX2-5Pct)</a><br>
-     <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/Testing_Houdini6_vs_Elite.html'), this">📈 Testing Houdini 6(Handicap)</a><br>
-   </div>
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
-   <div class="folder" style="color: var(--accent);">Tournaments</div>
-   <div class="nested" id="tourneys">
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
-   <div class="folder">Ultra-Bullet(9s + 0.1s)</div>
-   <div class="nested">
-     <div class="folder">Seasons</div>
-     <div class="nested">
-       <a href="javascript:void(0)" onclick="openFile('html/Seasons/FirstSeasonU5.html'), this">First Season</a>
-       <a href="javascript:void(0)" onclick="openFile('html/Seasons/SecondSeasonU5.html'), this">Second Season</a>
-       <a href="javascript:void(0)" onclick="openFile('html/Seasons/ThirdSeasonU5.html'), this">Third Season</a>
-       <a href="javascript:void(0)" onclick="openFile('html/Seasons/FourthSeasonU5.html'), this">Fourth Season</a>
-     </div>
-     <div class="folder">World Cup</div>
-     <div class="nested">
-       <div class="folder">Winter-2026</div>
-       <div class="nested">
-           <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Participants WC-w2026.html'), this">📈 Participants WC-w2026</a><br>
-           <div class="folder">Qualify</div>
-           <div class="nested">
-           <div class="folder">USA</div>
-           <div class="nested">
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-Q.html'), this">📈 USA Final</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-St2-Q.html'), this">📈 USA Stage-2</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-St1-Q.html'), this">📈 USA Stage-1</a><br>
-           </div>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Italy-Q.html'), this">📈 Italy</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Germany-Q.html'), this">📈 Germany</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/United_Kingdom-Q.html'), this">📈 United Kingdom</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Russia-Q.html'), this">📈 Russia</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Brazil-Q.html'), this">📈 Brazil</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Canada-Q.html'), this">📈 Canada</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Sweden-Q.html'), this">📈 Sweden</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Turkey-Q.html'), this">📈 Turkey</a><br>
-              <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Northern_Europe-Q.html'), this">📈 Northern Europe</a><br>
-           </div>
-           <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Participants WC-w2026.html'), this">📈 Participants WC-w2026</a><br>
-           <div class="folder">Finals</div>
-        <div class="nested">
-          <div class="folder">Qualify</div>
-          <div class="nested">
-            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-4).html'), this">📈 Qualify Board-4</a>
-            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-3).html'), this">📈 Qualify Board-3</a>
-            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-2).html'), this">📈 Qualify Board-2</a>
-            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026Qualify(Board-1).html'), this">📈 Qualify Board-1</a>
-          </div>                                                                                                                  
-          <div class="folder">Finals</div>                                                                                        
-          <div class="nested">                                                                                                    
-            <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-1).html'), this">📈 Finals Board-1</a>
-          </div>
-        </div>
-       </div>
-     </div>
-     <div class="folder">Testing</div>
-     <div class="nested">
-       <div class="folder">Gauntlet</div>
-       <div class="nested">
-             <div class="folder">Stockfish</div>
-             <div class="nested">
-                <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish18(AVX2-5Pct)w11.html'), this">📈 Stockfish 18 x64(AVX2-5Pct)</a><br>
-                <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish171(AVX2-5Pct).html'), this">Stockfish 17.1 x64(AVX2-5Pct)</a>
-                <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish17(AVX2-5Pct)w10.html'), this">Stockfish 17-w10 x64(AVX2-5Pct)</a>
-                <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish17(AVX2-5Pct)w11.html'), this">Stockfish 17-w11 x64(AVX2-5Pct)</a>
-                <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish161(AVX2-5Pct)w10.html'), this">Stockfish 16.1 x64(AVX2-5Pct)</a>
-             </div>
-             <div class="folder">Reckless</div>
-             <div class="nested">
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless090(AVX2-5Pct).html'), this">Reckless 0.9.0 x64(AVX2-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless080(AVX2-5Pct).html'), this">Reckless 0.8.0 x64(AVX2-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless070(AVX2-5Pct).html'), this">Reckless 0.7.0 x64(AVX2-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless050(AVX2-5Pct).html'), this">Reckless 0.5.0 x64(AVX2-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless030(5Pct).html'), this">Reckless 0.3.0 x64(5Pct)</a>
-             </div>
-             <div class="folder">Alexandria</div>
-             <div class="nested">
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria900(BMI2-5Pct).html'), this">Alexandria 9.0.0 x64(BMI2-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria8112(BMI2-5Pct).html'), this">Alexandria 8.1.12(BMI2-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria800(BMI2-5Pct).html'), this">Alexandria 8.0.0 x64(BMI2-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria700(BMI2-5Pct).html'), this">Alexandria 7.0.0 x64(BMI2-5Pct)</a>
-             </div>
-             <div class="folder">Obsidian</div>
-             <div class="nested">
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Obsidian150(BMI2-5Pct).html'), this">Obsidian 15.0 x64(BMI2-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Obsidian160(BMI2-5Pct).html'), this">Obsidian 16.0 x64(BMI2-5Pct)</a>
-             </div>
-             <div class="folder">Viridithas</div>
-             <div class="nested">
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Viridithas15(AVX2-5Pct).html'), this">Viridithas 15.0.0 x64(AVX2-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Viridithas17(AVX2-5Pct).html'), this">Viridithas 17.0.0 x64(AVX2-5Pct)</a>
-             </div>
-             <div class="folder">Cinder</div>
-             <div class="nested">
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Cinder020(AVX2-5Pct).html'), this">Cinder 0.2.0 x64(AVX-5Pct)</a>
-                 <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Cinder041(AVX2-5Pct).html'), this">Cinder 0.4.1 x64(AVX-5Pct)</a>
-             </div>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Arasan251(BMI2-5Pct).html'), this">Arasan 25.1 x64(BMI2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Caissa122(BMI2-5Pct).html'), this">Caissa 1.22 x64(BMI2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Calvin610(5Pct).html'), this">Calvin 6.1.0 x64(5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Halogen16(BMI2-5Pct).html'), this">Halogen 16.0 x64(BMI2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Pawnocchio17(AVX2-5Pct).html'), this">Pawnocchio 1.7 x64(AVX2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/PlentyChess700(BMI2-5Pct).html'), this">PlentyChess 7.0.0 x64(BMI2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Renegade120(BMI2-5Pct).html'), this">Renegade 1.2.0 x64(BMI2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Quanticade20c(BMI2-5Pct).html'), this">Quanticade 2.0o x64(BMI2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Sapling127(5Pct).html'), this">Sapling 1.2.7 x64(5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Schneckbert30(AVX2-5Pct).html'), this">Schneckbert 3.0 x64(AVX2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stormphrax700(BMI2-5Pct).html'), this">Stormphrax 7.0.0 x64(BMI2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tarnished50(AVX2-5Pct).html'), this">Tarnished 5.0 x64(AVX2-5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Turbulence006(AVX2-5Pct).html'), this">Turbulence 0.0.6 x64(AVX2-5Pct)</a>
-       </div>
-       <div class="folder">Round-Robin</div>
-       <div class="nested">
-         <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Undertested-2024.09(5Pct).html'), this">The Undertested(2024.09)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/roundrobin/NewVersions_2503.html'), this">New Engines 2025.03</a>
-         <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Precision-Series(5Pct).html'), this">Precision Series</a>
-         <a href="javascript:void(0)" onclick="openFile('html/roundrobin/NewVersions-2023.06(5Pct).html'), this">New Versions-2023.06(5Pct)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Testing Titans-(Winter-2024).html'), this">Testing Titans-(Winter-2024)</a>
-         <a href="javascript:void(0)" onclick="openFile('html/roundrobin/TestingTop36Engines(5Pct).html'), this">Testing Top 36 Engines</a>
-         <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Reckless090d2(AVX2-5Pct).html'), this">Testing Reckless 0.9.0(AVX2) Dev2</a>
-       </div>
-     </div>
-   </div>
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
-   <div class="folder">Ultra-Bullet(2s + 0.1s)</div>
-    <div class="nested">
-      <div class="folder">Seasons</div>
-      <div class="nested">
-      </div>
-      <div class="folder">Testing</div>
-      <div class="nested">
-        <div class="folder">Gauntlet</div>
-        <div class="nested">
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish18(AVX2-1Pct)w11.html'), this">📈 Stockfish 18 x64(AVX2-1Pct)</a><br>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless090d2(AVX2-1Pct).html'), this">Reckless 0.9.0d2 x64(AVX2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless090d(AVX2-1Pct).html'), this">Reckless 0.9.0d x64(AVX2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/PlentyChess700(BMI2-1Pct).html'), this">PlentyChess 7.0.0 x64(BMI2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Pawnocchio19(AVX2-1Pct).html'), this">Pawnocchio 1.9 x64(AVX2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Caissa124(BMI2-1Pct).html'), this">Caissa 1.24 x64(BMI2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Viridithas1901(AVX2-1Pct).html'), this">Viridithas 19.0.1 x64(AVX2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Cinder031(AVX2-1Pct).html'), this">Cinder 0.3.1 x64(AVX2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Cinder041(AVX2-1Pct).html'), this">Cinder 0.4.1 x64(AVX2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Houdini501(1Pct).html'), this">Houdini 5.01 x64(1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Grail104(1Pct).html'), this">Grail 1.0.4 x64(1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Grail103(1Pct).html'), this">Grail 1.0.3 x64(1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tcheran100(AVX2-1Pct).html'), this">Tcheran 10.0 x64(AVX2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tcheran80(AVX2-1Pct).html'), this">Tcheran 8.0 x64(AVX2-1Pct)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tcheran70(AVX2-1Pct).html'), this">Tcheran 7.0 x64(AVX2-1Pct)</a>
-        </div>
-      </div>
+  <!-- sidebar-header -->
+  <div class="sidebar-header">
+    <div class="search-container">
+      <input 
+        type="text" 
+        id="sidebarSearch" 
+        placeholder="Search boards / engines..." 
+        autocomplete="off">
+      <span class="search-icon">🔍</span>
     </div>
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
-    <div class="folder">Blitz(3m + 2s)</div>
-    <div class="nested">
-      <div class="folder">Seasons</div>
-      <div class="nested">
-      </div>
-     <div class="folder">Testing</div>
-     <div class="nested">
-      <div class="folder">Gauntlet</div>
-      <div class="nested">
-        <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Critter16a(Blitz).html'), this">Critter 1.6a x64(Blitz)</a>
-      </div>
-     </div>
+    <br>
+    <button id="closeSidebar" class="close-btn">×</button>
+  </div> <!-- section [sidebar-header]-->
+
+  <!-- Elo List -->
+  <div class="section">
+    <div class="section-title neon-magenta">
+      <span class="toggle-arrow">▶</span> Elo List
     </div>
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
-    <div class="folder">Blitz-Bullet</div>
-    <div class="nested">
-      <div class="folder">Testing</div>
-      <div class="nested">
-        <div class="folder">Gauntlet</div>
-        <div class="nested">
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish171(AVX2).html'), this">Stockfish 17.1 x64(AVX2)</a>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish151(BMI2).html'), this">Stockfish 15.1 x64(BMI2)</a>
-          <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/Testing_Houdini6_vs_Elite.html'), this">📈 Testing Houdini 6(Handicap)</a><br>
-          <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Shredder12(Blitz).html'), this">Shredder 12 x64</a>
-        </div>
-        <div class="folder">Round-Robin</div>
-        <div class="nested">
-          <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/roundrobin/Multi-Timecontrol(2026.01).html'), this">📈 Testing Multi Timecontrol(2026.01)</a><br>
-        </div>
-      </div>
+    <div class="section-content">   <!-- ← new wrapper for collapsing -->
+      <a href="javascript:void(0)" style="margin:0; color: #fff;" onclick="openFile('html/elo/FullEloList.html')">Full Elo List(Blitz+Bullet)</a><br>
+      <a href="javascript:void(0)" style="margin:0; color: #ff0;" onclick="openFile('html/elo/EloRatingList_Blitz.html')">Blitz Elo Rating)</a><br>
+      <a href="javascript:void(0)" style="margin:0; color: #ffc;" onclick="openFile('html/elo/EloRatingList_5.html')">Elo List(5% of Blitz TC)</a><br>
+      <a href="javascript:void(0)" style="margin:0; color: #cff;" onclick="openFile('html/elo/EloRatingList_1.html')">Elo List(1% of of Blitz TC)</a><br>
+      <a href="javascript:void(0)" style="margin:0; color: #ffa;" onclick="openFile('html/elo/BestVersions_5.html')">📈 Best Versions(5% of Blitz TC)</a><br>
+      <a href="javascript:void(0)" style="margin:0; color: #aff;" onclick="openFile('html/elo/BestVersions_1.html')">📈 Best Versions(1% of Blitz TC)</a><br>
     </div>
-  </div> 
-   <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
+  </div> <!-- section [Elo List]-->
+
+  <!-- Chess Engines -->
+  <div class="section">
+    <div class="section-title neon-magenta">
+      <span class="toggle-arrow">▶</span> Chess Engines
+    </div>
+    <div class="section-content">   
+      <a href="javascript:void(0)" onclick="openFile('Engines/DownloadChessEngines.html')">Download Chess Engines</a><br>
+    </div>
+  </div> <!-- section [Chess Engines]-->
+
+  <!-- PGNViewer -->
+  <div class="section">
+    <div class="section-title neon-green">
+      <span class="toggle-arrow">▶</span> PGNViewer
+    </div>
+    <div class="section-content">   
+      <a href="javascript:void(0)" style="margin:0; color: #fff;" onclick="openFile('Pgn/PGNViewer.html')">📈 PGN-Viewer</a><br>
+    </div>
+  </div> <!-- section [PGNViewer]-->
+
+  <!-- RUNNING Tournaments -->
+  <div class="section">
+    <div class="section-title neon-red">
+      <span class="toggle-arrow">▶</span> RUNNING Tournaments
+    </div>
+    <div class="section-content">   
+      <a href="javascript:void(0)" onclick="openFile('html/roundrobin/TCEC29SufiOpeningBlitz.html')" title=" TCEC 29 Sufi Echo: Stockfish, Reckless & Elite 4">📈 Stockfish vs Reckless</a>
+      <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Houdini6RapidTop25Blitz.html')">📈 The Rapid-Blitz Symmetry Trial</a>
+    </div>
+  </div> <!-- section [RUNNING Tournaments]-->
+
+  <!-- RECENT Tournaments -->
+  <div class="section">
+    <div class="section-title neon-yellow">
+      <span class="toggle-arrow">▶</span> RECENT Tournaments
+    </div>
+    <div class="section-content">   
+      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Raphael310(BMI2-5Pct).html')">📈 Raphael 3.1.0 x64(BMI2-5Pct)</a>
+      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Raphael320(BMI2-5Pct).html')">📈 Raphael 3.2.0 x64(BMI2-5Pct)</a>
+      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-1).html')">📈 WorlCup-2026 Finals Board-1</a>
+      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-2).html')">📈 WorlCup-2026 Finals Board-2</a>
+      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-3).html')">📈 WorlCup-2026 Finals Board-3</a>
+      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-4).html')">📈 WorlCup-2026 Finals Board-4</a>
+    </div>
+  </div> <!-- section [RECENT Tournaments]-->
+
+ <!-- [Tournaments] | Root Folder -->
+  <div class="section">
+    <div class="section-title neon-magenta">
+      <span class="toggle-arrow">▶</span> Tournaments
+    </div>
+    <div class="section-content">
+
+      <!-- [Blitz(3m + 2s)] -->
+      <div class="subsection">
+        <div class="section-title neon-cyan">
+          <span class="toggle-arrow">▶</span> Blitz(3m + 2s)
+        </div>
+        <div class="section-content">
+
+          <!-- [Testing] -->
+          <div class="subsection">
+            <div class="section-title neon-cyan">
+              <span class="toggle-arrow">▶</span> Testing
+            </div>
+            <div class="section-content">
+
+              <!-- [Gauntlet] -->
+              <div class="subsection">
+                <div class="section-title neon-cyan">
+                  <span class="toggle-arrow">▶</span> Gauntlet
+                </div>
+                <div class="section-content">
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Critter16a(Blitz).html')">Critter 1.6a x64(Blitz)</a>
+                </div> <!-- section-content -->
+              </div> <!-- subsection [Gauntlet]-->
+
+              <!-- [Round-Robin] -->
+              <div class="subsection">
+                <div class="section-title neon-cyan">
+                  <span class="toggle-arrow">▶</span> Round-Robin
+                </div>
+                <div class="section-content">
+                  <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Reckless090d2(AVX2-5Pct).html')">Testing Reckless 0.9.0(AVX2) Dev2</a>
+
+                </div> <!-- section-content -->
+              </div> <!-- subsection [Round-Robin] -->
+
+            </div> <!-- section-content -->
+          </div> <!-- subsection [Testing]-->
+
+        </div> <!-- section-content -->
+      </div> <!-- subsection [Blitz(3m + 2s)] -->
+
+
+      <!-- [Blitz-Bullet] -->
+      <div class="subsection">
+        <div class="section-title neon-cyan">
+          <span class="toggle-arrow">▶</span> Blitz-Bullet
+        </div>
+        <div class="section-content">
+
+          <!-- [Testing] -->
+          <div class="subsection">
+            <div class="section-title neon-cyan">
+              <span class="toggle-arrow">▶</span> Testing
+            </div>
+            <div class="section-content">
+
+              <!-- [Gauntlet] -->
+              <div class="subsection">
+                <div class="section-title neon-cyan">
+                  <span class="toggle-arrow">▶</span> Gauntlet
+                </div>
+                <div class="section-content">
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish171(AVX2).html')">Stockfish 17.1 x64(AVX2)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish151(BMI2).html')">Stockfish 15.1 x64(BMI2)</a>
+                  <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/gauntlet/Testing_Houdini6_vs_Elite.html')">📈 Testing Houdini 6(Handicap)</a><br>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Shredder12(Blitz).html')">Shredder 12 x64</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Critter16a(Blitz-Bullet).html')">Critter 1.6a</a>
+                </div> <!-- section-content -->
+              </div> <!-- subsection [Gauntlet]-->
+
+              <!-- [Round-Robin] -->
+              <div class="subsection">
+                <div class="section-title neon-cyan">
+                  <span class="toggle-arrow">▶</span> Round-Robin
+                </div>
+                <div class="section-content">
+                  <a href="javascript:void(0)" style="margin:0; color: #0ff;" onclick="openFile('html/roundrobin/Multi-Timecontrol(2026.01).html')">📈 Testing Multi Timecontrol(2026.01)</a><br>
+                  <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Houdini501Handicap.html')">Blitz & Bullet Challenge</a>
+                </div> <!-- section-content -->
+              </div> <!-- subsection [Round-Robin] -->
+
+            </div> <!-- section-content -->
+          </div> <!-- subsection [Testing]-->
+
+        </div> <!-- section-content -->
+      </div> <!-- subsection [Blitz-Bullet] -->
+
+      <!-- [Ultra-Bullet(9s + 0.1s)] -->
+      <div class="subsection">
+        <div class="section-title neon-cyan">
+          <span class="toggle-arrow">▶</span> Ultra-Bullet(9s+0.1s)
+        </div>
+        <div class="section-content">
+
+          <!-- [Testing] -->
+          <div class="subsection">
+            <div class="section-title neon-cyan">
+              <span class="toggle-arrow">▶</span> Testing
+            </div>
+            <div class="section-content">
+
+              <!-- [Gauntlet] -->
+              <div class="subsection">
+                <div class="section-title neon-cyan">
+                  <span class="toggle-arrow">▶</span> Gauntlet
+                </div>
+                <div class="section-content">
+
+                  <!-- Stockfish -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Stockfish
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish18(AVX2-5Pct)w11.html')">📈 Stockfish 18 x64(AVX2-5Pct)</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish171(AVX2-5Pct).html')">Stockfish 17.1 x64(AVX2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish17(AVX2-5Pct)w10.html')">Stockfish 17-w10 x64(AVX2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish17(AVX2-5Pct)w11.html')">Stockfish 17-w11 x64(AVX2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish161(AVX2-5Pct)w10.html')">Stockfish 16.1 x64(AVX2-5Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <!-- Reckless -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Reckless
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless090(AVX2-5Pct).html')">Reckless 0.9.0 x64(AVX2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless080(AVX2-5Pct).html')">Reckless 0.8.0 x64(AVX2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless070(AVX2-5Pct).html')">Reckless 0.7.0 x64(AVX2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless050(AVX2-5Pct).html')">Reckless 0.5.0 x64(AVX2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless030(5Pct).html')">Reckless 0.3.0 x64(5Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <!-- Alexandria -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Alexandria
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria900(BMI2-5Pct).html')">Alexandria 9.0.0 x64(BMI2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria8112(BMI2-5Pct).html')">Alexandria 8.1.12(BMI2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria800(BMI2-5Pct).html')">Alexandria 8.0.0 x64(BMI2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Alexandria700(BMI2-5Pct).html')">Alexandria 7.0.0 x64(BMI2-5Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <!-- Obsidian -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Obsidian
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Obsidian150(BMI2-5Pct).html')">Obsidian 15.0 x64(BMI2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Obsidian160(BMI2-5Pct).html')">Obsidian 16.0 x64(BMI2-5Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <!-- Viridithas -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Viridithas
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Viridithas15(AVX2-5Pct).html')">Viridithas 15.0.0 x64(AVX2-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Viridithas17(AVX2-5Pct).html')">Viridithas 17.0.0 x64(AVX2-5Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <!-- Cinder -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Cinder
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Cinder020(AVX2-5Pct).html')">Cinder 0.2.0 x64(AVX-5Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Cinder041(AVX2-5Pct).html')">Cinder 0.4.1 x64(AVX-5Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Arasan251(BMI2-5Pct).html')">Arasan 25.1 x64(BMI2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Caissa122(BMI2-5Pct).html')">Caissa 1.22 x64(BMI2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Calvin610(5Pct).html')">Calvin 6.1.0 x64(5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Halogen16(BMI2-5Pct).html')">Halogen 16.0 x64(BMI2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Pawnocchio17(AVX2-5Pct).html')">Pawnocchio 1.7 x64(AVX2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/PlentyChess700(BMI2-5Pct).html')">PlentyChess 7.0.0 x64(BMI2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Renegade120(BMI2-5Pct).html')">Renegade 1.2.0 x64(BMI2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Quanticade20c(BMI2-5Pct).html')">Quanticade 2.0o x64(BMI2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Sapling127(5Pct).html')">Sapling 1.2.7 x64(5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Schneckbert30(AVX2-5Pct).html')">Schneckbert 3.0 x64(AVX2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stormphrax700(BMI2-5Pct).html')">Stormphrax 7.0.0 x64(BMI2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tarnished50(AVX2-5Pct).html')">Tarnished 5.0 x64(AVX2-5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Turbulence006(AVX2-5Pct).html')">Turbulence 0.0.6 x64(AVX2-5Pct)</a>
+
+                </div> <!-- section-content -->
+              </div> <!-- subsection [Gauntlet]-->
+
+              <!-- [Round-Robin] -->
+              <div class="subsection">
+                <div class="section-title neon-cyan">
+                  <span class="toggle-arrow">▶</span> Round-Robin
+                </div>
+                <div class="section-content">
+                  <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Undertested-2024.09(5Pct).html')">The Undertested(2024.09)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/roundrobin/NewVersions_2503.html')">New Engines 2025.03</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Precision-Series(5Pct).html')">Precision Series</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/roundrobin/NewVersions-2023.06(5Pct).html')">New Versions-2023.06(5Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Testing Titans-(Winter-2024).html')">Testing Titans-(Winter-2024)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/roundrobin/TestingTop36Engines(5Pct).html')">Testing Top 36 Engines</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/roundrobin/Reckless090d2(AVX2-5Pct).html')">Testing Reckless 0.9.0(AVX2) Dev2</a>
+                </div> <!-- section-content -->
+              </div> <!-- subsection [Round-Robin] -->
+
+            </div> <!-- section-content -->
+          </div> <!-- subsection [Testing]-->
+
+          <!-- [Seasons] -->
+          <div class="subsection">
+            <div class="section-title neon-cyan">
+              <span class="toggle-arrow">▶</span> Seasons
+            </div>
+            <div class="section-content">
+              <a href="javascript:void(0)" onclick="openFile('html/Seasons/FirstSeasonU5.html')">First Season</a>
+              <a href="javascript:void(0)" onclick="openFile('html/Seasons/SecondSeasonU5.html')">Second Season</a>
+              <a href="javascript:void(0)" onclick="openFile('html/Seasons/ThirdSeasonU5.html')">Third Season</a>
+              <a href="javascript:void(0)" onclick="openFile('html/Seasons/FourthSeasonU5.html')">Fourth Season</a>
+            </div> <!-- section-content -->
+          </div> <!-- subsection [Seasons]-->
+
+          <!-- [World Cup] -->
+          <div class="subsection">
+            <div class="section-title neon-cyan">
+              <span class="toggle-arrow">▶</span> World Cup
+            </div>
+            <div class="section-content">
+
+              <!-- [Winter 2026] -->
+              <div class="subsection">
+                <div class="section-title neon-cyan">
+                  <span class="toggle-arrow">▶</span> Winter 2026
+                </div>
+                <div class="section-content">
+                  <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Winter-2026-CETC.html')">📈 Winter 2026 - Chess Engine Team Championship</a><br>
+                  <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Participants WC-w2026.html')">📈 Participants WC-w2026</a><br>
+
+                  <!-- [USA-Qualify] -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> USA-Qualify
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-Q.html')">📈 USA Final</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-St2-Q.html')">📈 USA Stage-2</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/USA-St1-Q.html')">📈 USA Stage-1</a><br>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection [USA-Qualify] ->
+
+                  <!-- [Qualify] -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Qualify
+                    </div>
+                    <div class="section-content">
+
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Italy-Q.html')">📈 Italy</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Germany-Q.html')">📈 Germany</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/United_Kingdom-Q.html')">📈 United Kingdom</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Russia-Q.html')">📈 Russia</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Brazil-Q.html')">📈 Brazil</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Canada-Q.html')">📈 Canada</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Sweden-Q.html')">📈 Sweden</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Turkey-Q.html')">📈 Turkey</a><br>
+                      <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Qualify/Northern_Europe-Q.html')">📈 Northern Europe</a><br>
+
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection [Qualify] ->
+
+                  <!-- [Final] -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Final
+                    </div>
+                    <div class="section-content">
+                     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Board1.html')">📈 Finals Board-1(Technical Specifications)</a>
+
+                     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Qualify(Board-1).html')">📈 Qualify Board-1(Standings)</a>
+                     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Qualify(Board-2).html')">📈 Qualify Board-2</a>
+                     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Qualify(Board-3).html')">📈 Qualify Board-3</a>
+                     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Qualify(Board-4).html')">📈 Qualify Board-4</a>
+                     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-1).html')">📈 Finals Board-1</a>
+                     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-2).html')">📈 Finals Board-2</a>
+                     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-3).html')">📈 Finals Board-3</a>
+                     <a href="javascript:void(0)" onclick="openFile('html/WC-w2026/Final/WC-w2026-Finals(Board-4).html')">📈 Finals Board-4</a>
+         
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection [Final] -->
+
+                </div> <!-- section-content -->
+              </div> <!-- subsection [Winter 2026]-->
+
+            </div> <!-- section-content -->
+          </div> <!-- subsection [World Cup]-->
+
+        </div> <!-- section-content -->
+      </div> <!-- subsection [Ultra-Bullet(9s + 0.1s)]-->
+
+      <!-- [Ultra-Bullet(2s + 0.1s)] -->
+      <div class="subsection">
+        <div class="section-title neon-cyan">
+          <span class="toggle-arrow">▶</span> Ultra-Bullet(2s+0.1s)
+        </div>
+        <div class="section-content">
+
+          <!-- [Testing] -->
+          <div class="subsection">
+            <div class="section-title neon-cyan">
+              <span class="toggle-arrow">▶</span> Testing
+            </div>
+            <div class="section-content">
+
+              <!-- [Gauntlet] -->
+              <div class="subsection">
+                <div class="section-title neon-cyan">
+                  <span class="toggle-arrow">▶</span> Gauntlet
+                </div>
+                <div class="section-content">
+
+                  <!-- Stockfish -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Stockfish
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Stockfish18(AVX2-1Pct)w11.html')">📈 Stockfish 18 x64(AVX2-1Pct)</a><br>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <!-- Reckless -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Reckless
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless090d2(AVX2-1Pct).html')">Reckless 0.9.0d2 x64(AVX2-1Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Reckless090d(AVX2-1Pct).html')">Reckless 0.9.0d x64(AVX2-1Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <!-- Cinder -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Cinder
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Cinder031(AVX2-1Pct).html')">Cinder 0.3.1 x64(AVX2-1Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Cinder041(AVX2-1Pct).html')">Cinder 0.4.1 x64(AVX2-1Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <!-- Tcheran -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Tcheran
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tcheran100(AVX2-1Pct).html')">Tcheran 10.0 x64(AVX2-1Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tcheran80(AVX2-1Pct).html')">Tcheran 8.0 x64(AVX2-1Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Tcheran70(AVX2-1Pct).html')">Tcheran 7.0 x64(AVX2-1Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+
+                  <!-- Grail -->
+                  <div class="subsection">
+                    <div class="section-title neon-cyan">
+                      <span class="toggle-arrow">▶</span> Grail
+                    </div>
+                    <div class="section-content">
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Grail104(1Pct).html')">Grail 1.0.4 x64(1Pct)</a>
+                      <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Grail103(1Pct).html')">Grail 1.0.3 x64(1Pct)</a>
+                    </div> <!-- section-content -->
+                  </div> <!-- subsection -->
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/PlentyChess700(BMI2-1Pct).html')">PlentyChess 7.0.0 x64(BMI2-1Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Pawnocchio19(AVX2-1Pct).html')">Pawnocchio 1.9 x64(AVX2-1Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Caissa124(BMI2-1Pct).html')">Caissa 1.24 x64(BMI2-1Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Viridithas1901(AVX2-1Pct).html')">Viridithas 19.0.1 x64(AVX2-1Pct)</a>
+                  <a href="javascript:void(0)" onclick="openFile('html/gauntlet/Houdini501(1Pct).html')">Houdini 5.01 x64(1Pct)</a>
+
+                </div> <!-- section-content -->
+              </div> <!-- subsection -->
+
+            </div> <!-- section-content -->
+          </div> <!-- subsection -->
+
+          <!-- [Seasons] -->
+          <div class="subsection">
+            <div class="section-title neon-cyan">
+              <span class="toggle-arrow">▶</span> Seasons
+            </div>
+            <div class="section-content">
+            </div> <!-- section-content -->
+          </div> <!-- subsection [Seasons]-->
+
+        </div> <!-- section-content -->
+      </div> <!-- subsection [Ultra-Bullet(2s + 0.1s)]-->
+
+    </div> <!-- section-content -->
+  </div> <!-- section [Tournaments] | Root Folder -->
+
     <div id="tree-content" style="flex: 1; overflow-y: auto; padding: 10px;"></div>
     <div id="participants-footer" style="padding: 15px; border-top: 1px solid #30363d; background: #263b42; flex-shrink: 0;">
       <div style="color: #c9d1d9; font-size: 13px; font-weight: bold; margin-bottom: 5px;">Participants:</div>
       <p style="color: #dbc4ae; font-size: 14px; line-height: 1.4; margin: 0;">
-            Stockfish, PlentyChess, Alexandria, Reckless, RubiChess, Caissa, Obsidian, Clover, Berserk, Viridithas, Komodo, Starzix, Motor, Pawnocchio, Horsie, Stormphrax, Cinder, Integral, Renegade, Halogen, Clarity, Koivisto, Velvet, Revenge, RofChade, Booot, Tarnished, Rebel, Devre, Igel, Akimbo, Calvin, Seer, Pawn, Arasan, Wasp, Peacekeeper, Turbulence, SlowChess, Willow, Heimdall, Tucano + 200 others.
+            Stockfish, Reckless, PlentyChess, Alexandria, Caissa, Obsidian, Berserk, Komodo Dragon, RubiChess, Viridithas, Clover, Starzix, Motor, Pawnocchio, Cinder, Koivisto & more.
       </p>
     </div>
     <div class="header" style="padding: 15px; border-bottom: 1px solid #30363d; flex-shrink: 0;">
@@ -271,13 +516,32 @@ Fatalii, Hamsters, Amyan, AnMon, Yace, Nejmet">
       <a href="mailto:covaci61g@gmail.com" style="display: inline-block; color: #238636; text-decoration: none; font-weight: bold; font-size: 12px; border: 1px solid #238636; padding: 4px 10px; border-radius: 4px;">Contact Lab</a>
     </div>
   </div>
-</div>
 
-<div id="main-view" style="flex: 1; background: #0d1117;">
-  <iframe id="content-frame" name="content-frame" src="html/WC-w2026/Participants WC-w2026.html" style="width: 100%; height: 100%; border: none;"></iframe>
-</div> 
+</div> <!-- section [Sidebar / Drawer]-->
 
-<script src="script.js"></script>
+<!-- Hamburger button (only visible on mobile) -->
+<button id="menuBtn" class="hamburger">☰</button>
 
-</body>
+<!-- Overlay when menu is open on mobile -->
+<div id="overlay" class="overlay"></div>  
+
+<!-- main-content-->
+<main class="main-content">
+  <div id="loading" style="display:none; text-align:center; padding:60px; color:#00ffff;">
+    Loading... <span style="animation: spin 1.5s linear infinite;">⚙</span>
+  </div>
+  <iframe 
+    id="contentFrame" 
+    src="about:blank" 
+    frameborder="0" 
+    style="width:100%; 
+    height:calc(100vh - 10px); 
+    border:none; 
+    background:#0a0015;">
+  </iframe>
+</main> <!-- main-content-->
+
+  <script src="script.js"></script>
+
+ </body>
 </html>

@@ -1,135 +1,158 @@
-document.addEventListener('click', function(e) {
-    const folder = e.target.closest('.folder');
-    if (!folder) return;
+// Open sidebar (mobile)
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('overlay').style.display = 'block';
+});
 
-    const nested = folder.nextElementSibling;
-    if (nested && nested.classList.contains('nested')) {
-        const id = folder.innerText.trim();
+// Close sidebar
+document.getElementById('closeSidebar').addEventListener('click', closeMenu);
+document.getElementById('overlay').addEventListener('click', closeMenu);
+
+function closeMenu() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').style.display = 'none';
+}
+
+function openFile(path) {
+  const frame = document.getElementById('contentFrame');
+  const loading = document.getElementById('loading');
+  console.log("Loading:", path);
+
+  if (!frame || !path) {
+    console.warn("Iframe or path missing");
+    return;
+  }
+
+  // Show loading indicator
+  loading.style.display = 'block';
+  frame.style.display = 'none';
+
+  // Small delay so user sees loading (optional but nicer UX)
+  setTimeout(() => {
+    frame.src = path;
+
+    // Hide loading once iframe starts loading
+    frame.onload = () => {
+      loading.style.display = 'none';
+      frame.style.display = 'block';
+    };
+
+    // Fallback: hide loading after ~8 seconds even if something fails
+    setTimeout(() => {
+      if (loading.style.display !== 'none') {
+        loading.style.display = 'none';
+        frame.style.display = 'block';
+      }
+    }, 8000);
+  }, 300);
+
+  // Close mobile menu after selection
+  if (window.innerWidth <= 820) {
+    closeMenu();
+  }
+}
+
+// ==================== CLEAN FOLDER TOGGLE - FIXED VERSION ====================
+document.addEventListener('DOMContentLoaded', () => {
+
+    console.log("Folder toggle script loaded"); // For debugging
+
+    const titles = document.querySelectorAll('.section-title');
+
+    titles.forEach(title => {
+        // Remove any old listeners first (prevents double firing)
+        title.removeEventListener('click', title.clickHandler);
         
-        // Toggle Display
-        if (nested.style.display === 'block') {
-            nested.style.display = 'none';
-            localStorage.removeItem('f_' + id);
-        } else {
-            nested.style.display = 'block';
-            localStorage.setItem('f_' + id, 'active');
-        }
-    }
-});
+        title.clickHandler = function(e) {
+            e.stopImmediatePropagation(); // Prevent conflicts
 
-window.addEventListener('load', function() {
-    document.querySelectorAll('.folder').forEach(folder => {
-        const id = folder.innerText.trim();
-        const nested = folder.nextElementSibling;
+            const content = this.nextElementSibling;
 
-        if (nested && nested.classList.contains('nested')) {
-            if (localStorage.getItem('f_' + id) === 'active') {
-                nested.style.display = 'block';
-            } else {
-                nested.style.display = 'none';
+            if (content && content.classList.contains('section-content')) {
+                const willOpen = !content.classList.contains('open');
+
+                // Toggle current folder
+                content.classList.toggle('open');
+                this.classList.toggle('open');
+
+                console.log(`Toggled: ${this.textContent.trim()} → ${willOpen ? 'OPEN' : 'CLOSED'}`);
             }
-        }
-    });
-});
+        };
 
-function openFile(url, element) {
-    const frame = document.getElementById('content-frame');
-    if (!frame) return;
-
-    // Remove active state from all links
-    document.querySelectorAll('.nested a').forEach(a => {
-        a.classList.remove('active-link');
+        title.addEventListener('click', title.clickHandler);
     });
 
-    // Mark current selection
-    if (element) {
-        element.classList.add('active-link');
-    }
-
-    const urlParts = url.split('#');
-    const newFile = urlParts[0];
-    const hash = urlParts[1];
-
-    // Read: Logic to prevent unnecessary reloads
-    const currentSrc = decodeURIComponent(frame.src);
-    
-    if (currentSrc.includes(newFile) && hash) {
-        try {
-            // Think: Jump to specific game/result if file is already loaded
-            const elementToScroll = frame.contentDocument.getElementById(hash);
-            if (elementToScroll) {
-                elementToScroll.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                frame.src = url;
+    setTimeout(() => {
+        const mainFolders = document.querySelectorAll('.section-title');
+        mainFolders.forEach(title => {
+            if (title.textContent.includes('Tournaments2') || 
+                title.textContent.includes('RECENT Tournaments3')) {
+                const content = title.nextElementSibling;
+                if (content) {
+                    content.classList.add('open');
+                    title.classList.add('open');
+                }
             }
-        } catch(e) {
-            // Check: Fallback for cross-origin or loading issues
-            frame.src = url;
-        }
-    } else {
-        // Go: Hard load for new files
-        frame.src = url;
-    }
-}
-
-document.getElementById('search').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        let keyword = this.value.toLowerCase().trim();
-        let allLinks = document.querySelectorAll('a[onclick*="openFile"]');
-        let found = false;
-
-        for (let link of allLinks) {
-            let linkText = link.innerText.toLowerCase();
-            if (linkText.includes(keyword)) {
-                link.click(); 
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            alert("O Mjeshtër, '" + keyword + "' nuk ekziston as te divizionet, as te motorët!");
-        }
-    }
-});
-const searchInput = document.getElementById('search');
-const resultsDiv = document.getElementById('search-results');
-
-searchInput.addEventListener('input', function() {
-    let keyword = this.value.toLowerCase().trim();
-    resultsDiv.innerHTML = ''; 
-    
-    if (keyword.length < 1) return; 
-
-    let allLinks = document.querySelectorAll('a[onclick*="openFile"]');
-    
-    allLinks.forEach(link => {
-        let text = link.innerText;
-        if (text.toLowerCase().includes(keyword)) {
-            let item = document.createElement('div');
-            item.style = "padding:8px; cursor:pointer; border-bottom:1px solid #30363d; color:white;";
-            item.innerText = text;
-            item.onclick = () => {
-                link.click();
-                resultsDiv.innerHTML = '';
-                searchInput.value = text;
-            };
-            resultsDiv.appendChild(item);
-        }
-    });
-});
-
-function viewEloList() {
-    console.log("Butoni u shtyp! Funksioni u gjet!");
-    
-    fetch("ELO-UltraBullet.txt") 
-        .then(response => response.text())
-        .then(data => {
-            const displayBox = document.getElementById('list-display');
-            displayBox.innerHTML = '<h3>Lista u Shfaq</h3><pre>' + data + '</pre>';
-        })
-        .catch(error => {
-            document.getElementById('list-display').innerHTML = '<p style="color: red;">Gabim gjatë Fetch: Skedari nuk u gjet.</p>';
         });
-}
+    }, 300);
 
+});
+
+window.openFolder = function(folderName) {
+  console.log("OPEN:", folderName);
+
+  const title = document.querySelector(
+    `#sidebar .section-title[data-folder="${folderName}"]`
+  );
+
+  if (!title) {
+    console.warn("Folder not found:", folderName);
+    return false;
+  }
+
+  const content = title.nextElementSibling;
+  if (content && !content.classList.contains('open')) {
+    title.click();
+  }
+
+  return true;
+};
+
+// ==================== SEARCH FUNCTIONALITY ====================
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('sidebarSearch');
+    if (!searchInput) return;
+
+    const allLinks = document.querySelectorAll('.sidebar a, .section-title');
+
+    function filterSidebar() {
+        const term = searchInput.value.toLowerCase().trim();
+
+        allLinks.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            const parentSection = item.closest('.section');
+
+            if (text.includes(term) || term === '') {
+                item.style.display = 'block';
+                if (parentSection) parentSection.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        // Auto-expand folders that have matches
+        document.querySelectorAll('.section-content').forEach(content => {
+            const hasVisible = Array.from(content.querySelectorAll('a')).some(a => a.style.display !== 'none');
+            if (hasVisible && term !== '') {
+                content.classList.add('open');
+                content.previousElementSibling.classList.add('open');
+            }
+        });
+    }
+
+    searchInput.addEventListener('input', filterSidebar);
+});
+
+  window.addEventListener('load', () => {
+    openFile('html/WC-w2026/Winter-2026-CETC.html');   
+  });
