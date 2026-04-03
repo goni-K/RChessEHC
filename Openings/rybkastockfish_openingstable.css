@@ -1,0 +1,118 @@
+
+/* Layout */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: #0b0c10;
+    color: #e5e5e5;
+}
+
+.page {
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 16px 48px;
+}
+
+/* Heading */
+.page h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #f5f5f5;
+}
+
+/* Table */
+.openings-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #111319;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px #222633;
+    font-size: 0.9rem;
+}
+
+.openings-table thead {
+    background: linear-gradient(90deg, #1f2833, #20263a);
+}
+
+.openings-table th,
+.openings-table td {
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.openings-table th {
+    font-weight: 600;
+    color: #f0f0f0;
+    border-bottom: 1px solid #2b3242;
+    white-space: nowrap;
+}
+
+.openings-table tbody tr:nth-child(even) {
+    background-color: #151822;
+}
+
+.openings-table tbody tr:nth-child(odd) {
+    background-color: #10131c;
+}
+
+.openings-table tbody tr:hover {
+    background-color: #22283a;
+}
+
+/* Columns */
+.openings-table td:nth-child(1),
+.openings-table td:nth-child(2),
+.openings-table td:nth-child(5) {
+    white-space: nowrap;
+}
+
+.openings-table td:nth-child(1),
+.openings-table td:nth-child(5) {
+    text-align: center;
+    width: 40px;
+}
+
+.openings-table td:nth-child(2) {
+    width: 60px;
+    font-weight: 600;
+    color: #ffd166;
+}
+
+.openings-table td:nth-child(3) {
+    width: 190px;
+    font-weight: 500;
+}
+
+.openings-table td:nth-child(4) {
+    width: 260px;
+}
+
+.openings-table td:nth-child(6) {
+    font-family: "Consolas", "SF Mono", Menlo, monospace;
+    font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .page {
+        margin: 16px auto;
+        padding: 0 8px 32px;
+    }
+
+    .page h1 {
+        font-size: 1.4rem;
+    }
+
+    .openings-table {
+        font-size: 0.8rem;
+    }
+
+    .openings-table th:nth-child(4),
+    .openings-table td:nth-child(4) {
+        display: none; /* hide Variation on small screens */
+    }
+}
